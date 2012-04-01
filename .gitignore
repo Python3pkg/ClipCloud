@@ -1,0 +1,6 @@
+dropbox/api.json
+*.sublime-project
+*.sublime-workspace
+test.txt
+test.png
+*.pyc
