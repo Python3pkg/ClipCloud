@@ -1,6 +1,7 @@
-from lib.settings import *
-import json
+from lib.settings import HISTORY_PATH
 from time import time
+from datetime import date
+from lib.pyjson import PyJson
 
 
 class History():
@@ -8,17 +9,8 @@ class History():
     Defines methods for interacting with the file that stores
     a history of the files that the user has uploaded to the service
     """
-
-    def load(self):
-        """
-        Private method
-        Loads the JSON file that holds the history
-        Returns: A dictionary representing it
-        """
-
-        raw_history = open(HISTORY_PATH, 'r')
-        history = json.load(raw_history)
-        return history
+    def __init__(self):
+        self.history = PyJson(HISTORY_PATH)
 
     def display(self, limit, direction):
         """
@@ -29,7 +21,7 @@ class History():
             - sort_by: the value to sort by (id, path, url or date)
         """
 
-        history = self.load()['history']
+        history = self.history.doc['history']
         print "Id, URL, Local File, Date Created"
         for record in history:
             if limit == 0:
@@ -52,8 +44,7 @@ class History():
             - url: the shortened URl that points to the
                 copy of the file hosted on the users dropbox acount
         """
-        doc = self.load()
-        history = doc['history']
+        history = self.history.doc['history']
 
         id = 0 if len(history) == 0 else history[-1]['id'] + 1
 
@@ -64,6 +55,4 @@ class History():
             'timestamp': time()
         })
 
-        raw = open(HISTORY_PATH, 'w')
-        raw.write(json.dumps(doc, sort_keys=True, indent=4))
-        raw.close()
+        self.history.save()

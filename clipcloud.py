@@ -72,10 +72,8 @@ class ClipCloud():
             metavar='SHARE', default='clipboard', choices=SHARING_SERVICES)
 
         (options, args) = parser.parse_args()
-        share_to = options.share
-        # print share_to
 
-        parse_args(argv, self, share_to)
+        parse_args(argv, self, options.share)
 
     def set_clipboard(self, link):
         """

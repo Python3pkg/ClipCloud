@@ -1,5 +1,5 @@
 from subprocess import check_output
-from settings import *
+from settings import UTILS_SCRIPT
 
 def capture(self, dimensions=None):
     """
