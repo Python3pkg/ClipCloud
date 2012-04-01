@@ -11,9 +11,6 @@
 # (c) 2011-2012 Giles Lavelle GPLv3
 #
 
-# for reading and writing to the history file and parsing the responses from the dropbox API
-import json
-
 # for interacting with the file system
 import os
 
@@ -27,15 +24,13 @@ from Tkinter import Tk
 # for opening pages to share the links
 import webbrowser
 
-# Include the Dropbox SDK libraries
+# for uploading to Dropbox
 from dropbox.dropbox import Dropbox
 
 # for parsing the arguments passed to the program when invoked from the command line
 from lib.parse_args import parse_args
 from lib.history import History
 from lib.settings import *
-
-#from pyjson import PyJson
 
 SHARING_SERVICES = 'clipboard facebook twitter email'.split(' ')
 SHARE_MESSAGE = 'I just uploaded a file to ClipCloud - check it out.'
@@ -46,7 +41,7 @@ URLS = {
 }
 
 
-class ClipCloud():
+class ClipCloud:
     """
     Sweet class for miscellaneous methods
     """
@@ -58,12 +53,6 @@ class ClipCloud():
         # Create the folder for storing screenshots if it doesnt exist.
         if not os.path.exists(SCREENSHOT_PATH):
             os.makedirs(SCREENSHOT_PATH)
-
-        # If there isn't a file to store history in, make one and add a json base structure
-        if not os.path.exists(HISTORY_PATH):
-            history = open(HISTORY_PATH, 'w')
-            history.write(json.dumps({'history': []}, sort_keys=True, indent=4))
-            history.close()
 
         # Add command line options
         parser = OptionParser()

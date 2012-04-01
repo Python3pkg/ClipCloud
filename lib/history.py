@@ -4,13 +4,13 @@ from datetime import date
 from lib.pyjson import PyJson
 
 
-class History():
+class History:
     """
     Defines methods for interacting with the file that stores
     a history of the files that the user has uploaded to the service
     """
     def __init__(self):
-        self.history = PyJson(HISTORY_PATH)
+        self.history = PyJson(HISTORY_PATH, base={'history': []})
 
     def display(self, limit, direction):
         """

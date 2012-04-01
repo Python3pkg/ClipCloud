@@ -35,7 +35,7 @@ def format_path(path):
         return '/' + path.strip('/')
 
 
-class Dropbox():
+class Dropbox:
     """
     Methods for interacting with the Dropbox APIs
     """

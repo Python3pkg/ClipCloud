@@ -1,20 +1,20 @@
 import os
-import json
 from subprocess import Popen
 import webbrowser
 
 from history import History
 from screenshot import capture
 from settings import *
+from pyjson import PyJson
 
 
 def parse_args(args, obj, share_to='clipboard'):
     """
     Parse arguments passed to the program
     Arguments:
+        obj: the instance of the ClipCloud class that called this function
         args: the array of arguments passed to the program
-        function: the function to run when
-    Returns:
+        share_to: the service to share the file to
     """
 
     # make sure we have some arguments to parse
@@ -85,10 +85,10 @@ def parse_args(args, obj, share_to='clipboard'):
             print 'id must be a positive integer'
             return
 
-        history = json.load(open(HISTORY_PATH))['history']
+        history = PyJson(HISTORY_PATH).doc['history']
 
-        if id < len(history):
-            record = history[id]
+        if id <= len(history):
+            record = history[id - 1]
         else:
             print 'No record with that ID exists'
             print 'Highest ID is %d' % len(history)
@@ -96,7 +96,7 @@ def parse_args(args, obj, share_to='clipboard'):
             return
 
         if operation == 'reupload':
-            self.handle_file(record['path'], 'a', 'clipboard')
+            obj.handle_file(record['path'], 'a', 'clipboard')
 
         elif operation == 'open_local':
             Popen(r'explorer /select,"%s"' % record['path'])
@@ -107,3 +107,6 @@ def parse_args(args, obj, share_to='clipboard'):
     elif args[1] == 'help':
         """Show the help file"""
         print HELP_MESSAGE
+
+    else:
+        print "Not a valid argument. Type clipcloud help to see what's available"
