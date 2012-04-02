@@ -10,14 +10,50 @@ from settings import *
 from pyjson import PyJson
 from gist import Gist
 
+# for uploading to Dropbox
+from dropbox.dropbox import Dropbox
 
-def parse_args(args, obj, share_to='clipboard'):
+
+def set_clipboard(link):
+        """
+        Set the contents of the user's clipboard to a string
+        Arguments:
+            link: the url of the uploaded file to set the clipboard to
+        """
+        r = Tk()
+        r.withdraw()
+        r.clipboard_clear()
+        r.clipboard_append(link)
+        r.destroy()
+
+
+def handle_file(path, filename, share_to):
     """
-    Parse arguments passed to the program
+    Respond to the event of the user attempting to upload a file,
+    be it a screenshot, text snippet or generic file.
+    """
+    # upload the file,
+    link = Dropbox().upload(path, filename)
+
+    # save a record of it to the history,
+    History().add(path, link)
+
+    # and then send the link to its destination, be that clipboard or social network.
+    if share_to == 'clipboard':
+        set_clipboard(link)
+        return
+
+    url = URLS[share_to] % (SHARE_MESSAGE, link)
+
+    webbrowser.open(url, new=2)
+
+
+def main(args, share_to='clipboard'):
+    """
+    Parse arguments passed to the program and act upon the results
     Arguments:
-        obj: the instance of the ClipCloud class that called this function
         args: the array of arguments passed to the program
-        share_to: the service to share the file to
+        share_to: string representing the service to share the file to
     """
 
     # make sure we have some arguments to parse
@@ -41,7 +77,7 @@ def parse_args(args, obj, share_to='clipboard'):
         filename = capture(arg)
         path = os.path.join(SCREENSHOT_PATH, filename)
 
-        obj.handle_file(path, filename, share_to)
+        handle_file(path, filename, share_to)
 
     elif args[1] == 'file':
         """
@@ -54,7 +90,7 @@ def parse_args(args, obj, share_to='clipboard'):
             print 'You must specify a file'
             return
 
-        obj.handle_file(path, path, share_to)
+        handle_file(path, path, share_to)
 
     elif args[1] == 'text':
         service = 'dropbox'
@@ -73,7 +109,7 @@ def parse_args(args, obj, share_to='clipboard'):
             f.write(clipboard)
             f.close()
 
-            obj.handle_file(path, filename, share_to)
+            handle_file(path, filename, share_to)
 
         elif service == 'gist':
             Gist().upload()
