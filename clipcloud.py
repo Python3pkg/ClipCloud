@@ -32,14 +32,6 @@ from lib.parse_args import parse_args
 from lib.history import History
 from lib.settings import *
 
-SHARING_SERVICES = 'clipboard facebook twitter email'.split(' ')
-SHARE_MESSAGE = 'I just uploaded a file to ClipCloud - check it out.'
-URLS = {
-    'twitter': "https://twitter.com/intent/tweet?text=%s&url=%s",
-    'facebook': "http://www.facebook.com/sharer.php?u=%s&t=%s",
-    'email': "mailto:%s%s"
-}
-
 
 class ClipCloud:
     """
@@ -53,6 +45,10 @@ class ClipCloud:
         # Create the folder for storing screenshots if it doesnt exist.
         if not os.path.exists(SCREENSHOT_PATH):
             os.makedirs(SCREENSHOT_PATH)
+
+        # Create the folder for storing temporary files if it doesnt exist.
+        if not os.path.exists(TMP_PATH):
+            os.makedirs(TMP_PATH)
 
         # Add command line options
         parser = OptionParser()

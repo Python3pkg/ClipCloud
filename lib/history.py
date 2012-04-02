@@ -1,7 +1,7 @@
 from lib.settings import HISTORY_PATH
 from time import time
 from datetime import date
-from lib.pyjson import PyJson
+from pyjson import PyJson
 
 
 class History:

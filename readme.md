@@ -1,10 +1,10 @@
 #ClipCloud
 
-ClipCloud is a program for quickly sharing files. Currently it consists of a command line program written in program that can upload files to Dropbox.
+ClipCloud is a program for quickly sharing files. Currently it consists of a command line program written in Python that can upload files to Dropbox.
 
 A GUI is planned, as well as the ability to upload elsewhere, such as a personal server via SSH.
 
-It has only been tested on Windows, and the ability to take screenshots is only supported on Windos because that part is written in C#.
+It has only been tested on Windows, and the ability to take screenshots is only supported on Windows because that part is written in C#.
 
 ##Arguments:
 - `help`: Display the help file.

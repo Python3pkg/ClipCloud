@@ -50,7 +50,7 @@ class Dropbox:
         self.proxy_host = proxy_host
         self.proxy_port = proxy_port
 
-        api_details = json.load(open('dropbox/api.json'))
+        api_details = json.load(open('dropbox/api.json'))['dropbox']
         session = DropboxSession(api_details['key'], api_details['secret'], self.ACCESS_TYPE)
 
         # if there is a token saved, that can be used to connect with dropbox

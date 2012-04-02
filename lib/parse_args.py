@@ -1,11 +1,14 @@
 import os
 from subprocess import Popen
 import webbrowser
+from Tkinter import Tk
+from time import time
 
 from history import History
 from screenshot import capture
 from settings import *
 from pyjson import PyJson
+from gist import Gist
 
 
 def parse_args(args, obj, share_to='clipboard'):
@@ -52,6 +55,26 @@ def parse_args(args, obj, share_to='clipboard'):
             return
 
         obj.handle_file(path, path, share_to)
+
+    elif args[1] == 'text':
+        service = 'dropbox'
+
+        if service == 'dropbox':
+            clipboard = Tk().clipboard_get()
+            filename = 'text_snippet_%d.txt' % time()
+            path = os.path.join(TMP_PATH, filename)
+
+            f = open(path, 'w')
+            f.write(clipboard)
+            f.close()
+
+            obj.handle_file(path, filename, share_to)
+
+        elif service == 'gist':
+            Gist().upload()
+
+        else:
+            print 'Not a valid service. Your choices are Dropbox and Github Gists.'
 
     elif args[1] == 'history':
         """
