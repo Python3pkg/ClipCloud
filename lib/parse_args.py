@@ -58,10 +58,15 @@ def parse_args(args, obj, share_to='clipboard'):
 
     elif args[1] == 'text':
         service = 'dropbox'
+        extension = 'txt'
+
+        if len(args) > 2:
+            extension = args[2]
 
         if service == 'dropbox':
             clipboard = Tk().clipboard_get()
-            filename = 'text_snippet_%d.txt' % time()
+
+            filename = 'text_snippet_%d.%s' % (time(), extension)
             path = os.path.join(TMP_PATH, filename)
 
             f = open(path, 'w')

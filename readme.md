@@ -12,6 +12,7 @@ It has only been tested on Windows, and the ability to take screenshots is only 
 - `screenshot`: Take a screenshot and upload it. If no arguments are specified, the enitre primary screen is used.
 - `history [number_of_items]`: Show a history of the files you've uploaded previously. defaults to the last 10 records.
 - `record <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `reupload`, `open_remote` or `open_local`.
+- `text [extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `.txt`.
 
 ##Options
 - `-s` `--share`: Specify what to do with the link to the upload file. Current options are sharing to Facebook, Twitter, Email or setting the clipboard. Defaults to `clipboard`.
