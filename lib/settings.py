@@ -1,10 +1,16 @@
 import os
+from platform import system
+
+PLATFORM = system()
 
 # name of the app.
 APP_NAME = "ClipCloud"
 
 # root folder in AppData for storing data
-APP_PATH = os.path.join(os.environ['APPDATA'], APP_NAME)
+if PLATFORM == 'Darwin':
+    APP_PATH = os.path.join(os.path.expanduser('~'), 'Library/Application Support/' + APP_NAME)
+else:
+    APP_PATH = os.path.join(os.environ['APPDATA'], APP_NAME)
 
 # folder for storing screenshots
 SCREENSHOT_PATH = os.path.join(APP_PATH, 'img')

@@ -4,3 +4,7 @@ dropbox/api.json
 test.txt
 test.png
 *.pyc
+docs/*
+clipcloud/*
+*.psd
+requests/*

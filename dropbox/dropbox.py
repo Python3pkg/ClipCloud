@@ -14,6 +14,7 @@ import ssl
 import urllib
 import urlparse
 import oauth
+import webbrowser
 from lib.settings import *
 
 

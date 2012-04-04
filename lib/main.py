@@ -1,5 +1,5 @@
 import os
-from subprocess import Popen
+from subprocess import Popen, call
 import webbrowser
 from Tkinter import Tk
 from time import time
@@ -93,18 +93,18 @@ def main(args, share_to='clipboard'):
         handle_file(path, path, share_to)
 
     elif args[1] == 'text':
-        service = 'dropbox'
+        service = 'gist'
         extension = 'txt'
 
         if len(args) > 2:
             extension = args[2]
 
+        clipboard = Tk().clipboard_get()
+
+        filename = 'text_snippet_%d.%s' % (time(), extension)
+        path = os.path.join(TMP_PATH, filename)
+
         if service == 'dropbox':
-            clipboard = Tk().clipboard_get()
-
-            filename = 'text_snippet_%d.%s' % (time(), extension)
-            path = os.path.join(TMP_PATH, filename)
-
             f = open(path, 'w')
             f.write(clipboard)
             f.close()
@@ -112,7 +112,7 @@ def main(args, share_to='clipboard'):
             handle_file(path, filename, share_to)
 
         elif service == 'gist':
-            Gist().upload()
+            Gist().upload(filename, clipboard)
 
         else:
             print 'Not a valid service. Your choices are Dropbox and Github Gists.'
@@ -160,10 +160,14 @@ def main(args, share_to='clipboard'):
             return
 
         if operation == 'reupload':
-            obj.handle_file(record['path'], 'a', 'clipboard')
+            handle_file(record['path'], 'a', 'clipboard')
 
         elif operation == 'open_local':
-            Popen(r'explorer /select,"%s"' % record['path'])
+            if PLATFORM == 'Windows':
+                Popen(r'explorer /select,"%s"' % record['path'])
+            elif PLATFORM == 'Darwin':
+                call(["open", "-R", record['path']])
+
 
         elif operation == 'open_remote':
             webbrowser.open(record['url'], new=2)
