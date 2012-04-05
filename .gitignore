@@ -8,3 +8,4 @@ docs/*
 clipcloud/*
 *.psd
 requests/*
+*.DS_Store

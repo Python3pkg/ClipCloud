@@ -1,7 +1,6 @@
 import os
 from subprocess import Popen, call
 import webbrowser
-from Tkinter import Tk
 from time import time
 
 from history import History
@@ -9,22 +8,10 @@ from screenshot import capture
 from settings import *
 from pyjson import PyJson
 from gist import Gist
+from clipboard import Clipboard
 
 # for uploading to Dropbox
 from dropbox.dropbox import Dropbox
-
-
-def set_clipboard(link):
-        """
-        Set the contents of the user's clipboard to a string
-        Arguments:
-            link: the url of the uploaded file to set the clipboard to
-        """
-        r = Tk()
-        r.withdraw()
-        r.clipboard_clear()
-        r.clipboard_append(link)
-        r.destroy()
 
 
 def handle_file(path, filename, share_to):
@@ -40,7 +27,7 @@ def handle_file(path, filename, share_to):
 
     # and then send the link to its destination, be that clipboard or social network.
     if share_to == 'clipboard':
-        set_clipboard(link)
+        Clipboard().set(link)
         return
 
     url = URLS[share_to] % (SHARE_MESSAGE, link)
@@ -61,24 +48,25 @@ def main(args, share_to='clipboard'):
         print "No arguments specified.\nType 'clipcloud help' for help."
         return
 
+        # Take a screenshot
     if args[1] == 'screenshot':
         """
         Take a screenshot and upload it to Dropbox.
         """
-        arg = None
+        if len(args) > 2 and args[2] in ['screen', 'draw']:
+            mode = args[2]
+        else:
+            mode = 'screen'
 
-        if len(args) > 5:
-            x = args[2]
-            y = args[3]
-            width = args[4]
-            height = args[5]
-            arg = (x, y, width, height)
-
-        filename = capture(arg)
-        path = os.path.join(SCREENSHOT_PATH, filename)
+        if mode == 'screen':
+            filename = capture()
+            path = os.path.join(SCREENSHOT_PATH, filename)
+        elif mode == 'draw':
+            call('C:/Windows/system32/SnippingTool.exe')
 
         handle_file(path, filename, share_to)
 
+    # Upload a file
     elif args[1] == 'file':
         """
         Upload a file to Dropbox
@@ -92,6 +80,7 @@ def main(args, share_to='clipboard'):
 
         handle_file(path, path, share_to)
 
+    # Upload some text
     elif args[1] == 'text':
         service = 'gist'
         extension = 'txt'
@@ -99,7 +88,7 @@ def main(args, share_to='clipboard'):
         if len(args) > 2:
             extension = args[2]
 
-        clipboard = Tk().clipboard_get()
+        clipboard = Clipboard().get()
 
         filename = 'text_snippet_%d.%s' % (time(), extension)
         path = os.path.join(TMP_PATH, filename)
@@ -117,6 +106,7 @@ def main(args, share_to='clipboard'):
         else:
             print 'Not a valid service. Your choices are Dropbox and Github Gists.'
 
+    # Display the history
     elif args[1] == 'history':
         """
         Display the history of previously uploaded file
@@ -132,6 +122,7 @@ def main(args, share_to='clipboard'):
 
         History().display(limit, direction)
 
+    # Do something with a previous file
     elif args[1] == 'record':
         """
         Perform operations on previously uploaded files such as
@@ -168,10 +159,10 @@ def main(args, share_to='clipboard'):
             elif PLATFORM == 'Darwin':
                 call(["open", "-R", record['path']])
 
-
         elif operation == 'open_remote':
             webbrowser.open(record['url'], new=2)
 
+    # Show help
     elif args[1] == 'help':
         """Show the help file"""
         print HELP_MESSAGE
