@@ -82,7 +82,7 @@ def main(args, share_to='clipboard'):
 
     # Upload some text
     elif args[1] == 'text':
-        service = 'gist'
+        service = 'dropbox'
         extension = 'txt'
 
         if len(args) > 2:
