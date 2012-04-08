@@ -7,7 +7,8 @@ from history import History
 from screenshot import capture
 from settings import *
 from pyjson import PyJson
-from gist import Gist
+# gist functionality on hold - dropbox works fine for now
+# from gist import Gist
 from clipboard import Clipboard
 
 # for uploading to Dropbox
@@ -100,8 +101,8 @@ def main(args, share_to='clipboard'):
 
             handle_file(path, filename, share_to)
 
-        elif service == 'gist':
-            Gist().upload(filename, clipboard)
+        #elif service == 'gist':
+        #    Gist().upload(filename, clipboard)
 
         else:
             print 'Not a valid service. Your choices are Dropbox and Github Gists.'
