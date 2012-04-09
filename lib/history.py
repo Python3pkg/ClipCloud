@@ -12,7 +12,7 @@ class History:
     def __init__(self):
         self.history = PyJson(HISTORY_PATH, base={'history': []})
 
-    def display(self, limit, direction):
+    def display(self, limit, sort_by, direction):
         """
         Load the history and print out a number of records to the screen.
         Arguments:
@@ -21,8 +21,10 @@ class History:
             - sort_by: the value to sort by (id, path, url or date)
         """
 
-        history = self.history.doc['history']
+        history = sorted(self.history.doc['history'], key=lambda k: k[sort_by])
+
         print "Id, URL, Local File, Date Created"
+
         for record in history:
             if limit == 0:
                 return

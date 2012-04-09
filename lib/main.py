@@ -115,8 +115,9 @@ def main(args, share_to='clipboard'):
         """
         Display the history of previously uploaded file
         """
-        direction = 'd'  # descending
+        direction = 'a'  # ascending
         limit = 10
+        sort_by = 'id'
 
         if len(args) > 2:
             limit = int(args[2])
@@ -124,7 +125,11 @@ def main(args, share_to='clipboard'):
             if len(args) > 3 and args[3] in 'ad':
                 direction = args[3]
 
-        History().display(limit, direction)
+                if len(args) > 4 and args[4] in ['id', 'url', 'path', 'timestamp']:
+                    sort_by = args[4]
+
+        print sort_by
+        History().display(limit, sort_by, direction)
 
     # Do something with a previous file
     elif args[1] == 'record':
