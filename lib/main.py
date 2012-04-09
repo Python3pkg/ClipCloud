@@ -23,6 +23,9 @@ def handle_file(path, filename, share_to):
     # upload the file,
     link = Dropbox().upload(path, filename)
 
+    if not link:
+        return
+
     # save a record of it to the history,
     History().add(path, link)
 
