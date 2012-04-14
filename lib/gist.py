@@ -1,8 +1,7 @@
 import webbrowser
-from pyjson import PyJson
+from pyjson import *
 import os
 from settings import *
-import json
 import requests
 
 
@@ -41,7 +40,7 @@ class Gist:
             doc.save()
 
     def upload(self, filename, text):
-        data = json.dumps({
+        data = save_json({
             "public": False,
             "files": {
                 filename: {

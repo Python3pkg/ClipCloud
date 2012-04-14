@@ -43,7 +43,7 @@ def clipcloud():
         help="share a link to the file to a social media site",
         metavar='SHARE', default='clipboard', choices=SHARING_SERVICES)
 
-    (options, args) = parser.parse_args()
+    options, args = parser.parse_args()
 
     # finally send the command line arguments off to be processed
     main(argv, options.share)

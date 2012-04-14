@@ -51,7 +51,7 @@ class Dropbox:
         self.proxy_host = proxy_host
         self.proxy_port = proxy_port
 
-        api_details = json.load(open('dropbox/api.json'))['dropbox']
+        api_details = json.load(open('lib/api.json'))['dropbox']
         session = DropboxSession(api_details['key'], api_details['secret'], self.ACCESS_TYPE)
 
         # if there is a token saved, that can be used to connect with dropbox
@@ -98,35 +98,73 @@ class Dropbox:
 
         self.client = client
 
-    def upload(self, path, filename):
+    def upload(self, path, filepath=None):
         """
         Upload a file to the dropbox servers
+        Arguments:
+        - path: The path to the local copy of the file to be uploaded
+        - filename: The path, including the filename given to the remote copy of the file
+            once it is uploaded to Dropbox. If omitted it defaults to being the same as path
         """
-        if self.client is not None:
-            filename = '/' + filename
 
-            try:
-                print 'Uploading...'
-                # Open the file located at path and upload it to the dropbox servers with the name of filename
-                response = self.client.put_file(filename, open(path, 'rb'))
-                print "Upload finished"
-            except Exception as error:
-                print "Upload failed"
-                if DEBUG:
-                    print error
-                return
-
-            if DEBUG:
-                print path
-                print response
-
-            link = self.client.share(filename)['url']
-
-        else:
+        if self.client is None:
             print 'Please authenticate with Dropbox before trying to upload.'
             return
 
-        return link
+        if filepath is None:
+            filepath = path
+        filepath = '/' + filepath
+
+        try:
+            print 'Uploading...'
+            # Open the file located at path and upload it to the dropbox servers
+            response = self.client.put_file(filepath, open(path, 'rb'))
+            print "Upload finished"
+        except Exception as error:
+            print "Upload failed"
+            if DEBUG:
+                print error
+            return
+
+        if DEBUG:
+            print path
+            print response
+
+    def upload_folder(self, folder):
+        self.create_folder(folder)
+
+        for dirname, dirnames, filenames in os.walk(folder):
+            for subdirname in dirnames:
+                f = os.path.join(dirname, subdirname)
+                self.create_folder(f)
+                self.upload()
+            for filename in filenames:
+                self.upload(dirname + '/' + filename)
+
+    def get_link(self, filename):
+        return self.client.share('/' + filename)['url']
+
+    def create_folder(self, folder_name, num=1):
+        new_folder_name = folder_name
+
+        # Try to create a folder with the given name
+        try:
+            if num > 1:
+                new_folder_name += '_(' + str(num) + ')'
+
+            self.client.file_create_folder('/' + new_folder_name)
+
+            if num > 1:
+                print 'Warning: a folder with that name already exists. Renaming to ' + new_folder_name
+
+            self.final_folder_name = new_folder_name
+
+        # If it fails because a folder with that name already exists
+        # then increment a number, append it to the folder name
+        # and call the function recursively until it works
+        except ErrorResponse as e:
+            if e.status == 403:
+                self.create_folder(folder_name, num=num + 1)
 
 
 class DropboxClient(object):

@@ -12,17 +12,10 @@ from pyjson import PyJson
 from clipboard import Clipboard
 
 # for uploading to Dropbox
-from dropbox.dropbox import Dropbox
+from dropbox import Dropbox
 
 
-def handle_file(path, filename, share_to):
-    """
-    Respond to the event of the user attempting to upload a file,
-    be it a screenshot, text snippet or generic file.
-    """
-    # upload the file,
-    link = Dropbox().upload(path, filename)
-
+def save_link(link, path, share_to):
     if not link:
         return
 
@@ -32,19 +25,77 @@ def handle_file(path, filename, share_to):
     # and then send the link to its destination, be that clipboard or social network.
     if share_to == 'clipboard':
         Clipboard().set(link)
-        return
+    else:
+        url = URLS[share_to] % (SHARE_MESSAGE, link)
+        webbrowser.open(url, new=2)
 
-    url = URLS[share_to] % (SHARE_MESSAGE, link)
 
-    webbrowser.open(url, new=2)
+def handle_files(paths, filenames, share_to):
+    """
+    Respond to the user attempting to upload one or more files or a folders
+    Arguments:
+    - paths: An array of paths that can point to files or folders
+    - share_to: The service to send the link to the uploaded files to
+    """
+    d = Dropbox()
+
+    # Start by sorting the paths into two separate arrays for files and folders
+    files = []
+    folders = []
+    for path in paths:
+        if os.path.isdir(path):
+            folders.append(path)
+        else:
+            files.append(path)
+    num_files = len(files)
+    num_folders = len(folders)
+
+    # There's a special case if there's one file and no folders,
+    # It can be uploaded on its own.
+    if num_files == 1 and num_folders == 0:
+        _file = files[0]
+        d.upload(_file, filepath=filenames[0])
+        link = d.get_link('/' + _file)
+
+    # Otherwise it's more complicated.
+    # We could have multiple files, one folder, multiple folders, or a mix of files and folders
+
+    # If there's one folder only, we can upload it using its current name
+    elif num_folders == 1 and num_files == 0:
+        folder_name = folders[0]
+        d.upload_folder(folder_name)
+        link = d.get_link('/' + folder_name)
+
+    # If we've got to here, we have multiple files and folders
+    else:
+        # create a root folder with a unique name to hold everything we upload
+        code = str(int(time()))
+        folder_name = 'group_upload_' + code
+        d.create_folder(folder_name)
+
+        # Upload all the files to the root folder
+        i = 0
+        for _file in files:
+            filename = folder_name + '/' + filenames[i]
+            d.upload(_file, filepath=filename)
+            i += 1
+
+        # Then recursively upload all the folders and their contents to the root folder
+        for folder in folders:
+            d.upload_folder(folder_name)
+
+        link = d.get_link('/' + d.final_folder_name)
+
+    save_link(link, 'multiple_files', share_to)
 
 
 def main(args, share_to='clipboard'):
     """
     Parse arguments passed to the program and act upon the results
+
     Arguments:
-        args: the array of arguments passed to the program
-        share_to: string representing the service to share the file to
+    - args: the array of arguments passed to the program
+    - share_to: string representing the service to share the file to
     """
 
     # make sure we have some arguments to parse
@@ -52,42 +103,30 @@ def main(args, share_to='clipboard'):
         print "No arguments specified.\nType 'clipcloud help' for help."
         return
 
-        # Take a screenshot
     if args[1] == 'screenshot':
         """
         Take a screenshot and upload it to Dropbox.
         """
+        mode = 'screen'
         if len(args) > 2 and args[2] in ['screen', 'draw']:
             mode = args[2]
-        else:
-            mode = 'screen'
 
-        if mode == 'screen':
-            filename = capture()
-            path = os.path.join(SCREENSHOT_PATH, filename)
-        elif mode == 'draw':
-            call('C:/Windows/system32/SnippingTool.exe')
+        path, filename = capture(mode)
 
         handle_file(path, filename, share_to)
 
-    # Upload a file
-    elif args[1] == 'file':
-        """
-        Upload a file to Dropbox
-        """
+    elif args[1] == 'up':
+        # Upload the files and folders from the list the user passed in to Dropbox
         if len(args) > 2:
-            path = args[2]
-
+            paths = args[2:]
+            handle_files(paths, paths, share_to)
         else:
-            print 'You must specify a file'
-            return
+            print 'You must specify one or more files or folders'
 
-        handle_file(path, path, share_to)
-
-    # Upload some text
     elif args[1] == 'text':
+        # Upload some the contents of the user's clipboard to Dropbox as a text file
         service = 'dropbox'
-        extension = 'txt'
+        extension = 'txt'  # The Dropbox file viewer has inbuilt syntax highlighting so the file extension is relevant
 
         if len(args) > 2:
             extension = args[2]
@@ -110,11 +149,8 @@ def main(args, share_to='clipboard'):
         else:
             print 'Not a valid service. Your choices are Dropbox and Github Gists.'
 
-    # Display the history
     elif args[1] == 'history':
-        """
-        Display the history of previously uploaded file
-        """
+        # Display the history of previously uploaded file
         direction = 'a'  # ascending
         limit = 10
         sort_by = 'id'
@@ -128,7 +164,6 @@ def main(args, share_to='clipboard'):
                 if len(args) > 4 and args[4] in ['id', 'url', 'path', 'timestamp']:
                     sort_by = args[4]
 
-        print sort_by
         History().display(limit, sort_by, direction)
 
     # Do something with a previous file

@@ -2,6 +2,14 @@ import json
 import os
 
 
+def parse_json(s):
+    return json.loads(s)
+
+
+def save_json(d):
+    return json.dumps(d)
+
+
 class PyJson:
     """
     Class to abstract the process of reading, writing and parsing json files,

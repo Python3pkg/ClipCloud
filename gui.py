@@ -4,8 +4,9 @@ from lib.history import History
 hover_text = "ClipCloud"
 icon_filename = 'favicon.ico'
 
+
 def show_history(sysTrayIcon):
-    History().display(10, 'd')
+    History().display(10, 'id', 'a')
 
 menu_options = (
     ('Show history', None, show_history),

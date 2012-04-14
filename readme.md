@@ -8,10 +8,10 @@ It has only been tested on Windows, and the ability to take screenshots is only 
 
 ##Arguments:
 - `help`: Display the help file.
-- `file </path/to/file>`: Upload the specified file.
-- `screenshot`: Take a screenshot and upload it. If no arguments are specified, the enitre primary screen is used.
-- `history [number_of_items]`: Show a history of the files you've uploaded previously. defaults to the last 10 records.
-- `record <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `reupload`, `open_remote` or `open_local`.
+- `up </path/to/file/or/folder> [second file, third file...]`: Upload the specified files and folders.
+- `snap`: Take a screenshot and upload it. If no arguments are specified, the enitre primary screen is used.
+- `history [number_of_items]`: Show a history of the files you've uploaded previously. Defaults to the last 10 records.
+- `revisit <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `reupload`, `open_remote` or `open_local`.
 - `text [extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
 
 ##Options
@@ -20,5 +20,5 @@ It has only been tested on Windows, and the ability to take screenshots is only 
 ##Todo:
 - Package as a .exe for distribution to users without Python
 - Cross platform support, starting with screenshots
-- Add custom dimensions to screenshots
+- Add tool to draw rectangle to specify what portion of the screen should be captured for a screenshot
 - Add text snippet sharing to Github Gists?
