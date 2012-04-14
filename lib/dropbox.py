@@ -135,11 +135,10 @@ class Dropbox:
 
         for dirname, dirnames, filenames in os.walk(folder):
             for subdirname in dirnames:
-                f = os.path.join(dirname, subdirname)
+                f = dirname + '/' + subdirname
                 self.create_folder(f)
-                self.upload()
             for filename in filenames:
-                self.upload(dirname + '/' + filename)
+                self.upload(dirname + '/' + filename, filepath=self.final_folder_name + '/' + filename)
 
     def get_link(self, filename):
         return self.client.share('/' + filename)['url']

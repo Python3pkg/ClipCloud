@@ -56,15 +56,17 @@ def handle_files(paths, filenames, share_to):
         _file = files[0]
         d.upload(_file, filepath=filenames[0])
         link = d.get_link('/' + _file)
+        local_path = _file
 
     # Otherwise it's more complicated.
     # We could have multiple files, one folder, multiple folders, or a mix of files and folders
 
     # If there's one folder only, we can upload it using its current name
     elif num_folders == 1 and num_files == 0:
-        folder_name = folders[0]
-        d.upload_folder(folder_name)
-        link = d.get_link('/' + folder_name)
+        folder = folders[0]
+        d.upload_folder(folder)
+        link = d.get_link('/' + folder)
+        local_path = folder
 
     # If we've got to here, we have multiple files and folders
     else:
@@ -85,8 +87,9 @@ def handle_files(paths, filenames, share_to):
             d.upload_folder(folder_name)
 
         link = d.get_link('/' + d.final_folder_name)
+        local_path = 'multiple_files'
 
-    save_link(link, 'multiple_files', share_to)
+    save_link(link, local_path, share_to)
 
 
 def main(args, share_to='clipboard'):
@@ -107,7 +110,7 @@ def main(args, share_to='clipboard'):
         """
         Take a screenshot and upload it to Dropbox.
         """
-        mode = 'screen'
+        mode = 'snap'
         if len(args) > 2 and args[2] in ['screen', 'draw']:
             mode = args[2]
 
@@ -167,7 +170,7 @@ def main(args, share_to='clipboard'):
         History().display(limit, sort_by, direction)
 
     # Do something with a previous file
-    elif args[1] == 'record':
+    elif args[1] == 'revisit':
         """
         Perform operations on previously uploaded files such as
         reuploading or viewing

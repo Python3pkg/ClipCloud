@@ -48,7 +48,7 @@ class History:
         """
         history = self.history.doc['history']
 
-        id = 0 if len(history) == 0 else history[-1]['id'] + 1
+        id = 1 if len(history) == 0 else history[-1]['id'] + 1
 
         history.append({
             'id': id,
