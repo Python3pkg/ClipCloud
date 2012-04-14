@@ -4,23 +4,21 @@ import webbrowser
 from time import time
 
 from history import History
-from screenshot import capture
 from settings import *
 from pyjson import PyJson
-# gist functionality on hold - dropbox works fine for now
-# from gist import Gist
 from clipboard import Clipboard
 
 # for uploading to Dropbox
 from dropbox import Dropbox
 
 
-def save_link(link, path, share_to):
+def save_link(link, paths, share_to):
     if not link:
         return
 
     # save a record of it to the history,
-    History().add(path, link)
+    for path in paths:
+        History().add(path, link)
 
     # and then send the link to its destination, be that clipboard or social network.
     if share_to == 'clipboard':
@@ -56,7 +54,7 @@ def handle_files(paths, filenames, share_to):
         _file = files[0]
         d.upload(_file, filepath=filenames[0])
         link = d.get_link('/' + _file)
-        local_path = _file
+        local_paths = _file
 
     # Otherwise it's more complicated.
     # We could have multiple files, one folder, multiple folders, or a mix of files and folders
@@ -66,7 +64,7 @@ def handle_files(paths, filenames, share_to):
         folder = folders[0]
         d.upload_folder(folder)
         link = d.get_link('/' + folder)
-        local_path = folder
+        local_paths = folder
 
     # If we've got to here, we have multiple files and folders
     else:
@@ -87,9 +85,9 @@ def handle_files(paths, filenames, share_to):
             d.upload_folder(folder_name)
 
         link = d.get_link('/' + d.final_folder_name)
-        local_path = 'multiple_files'
+        local_paths = files
 
-    save_link(link, local_path, share_to)
+    save_link(link, local_paths, share_to)
 
 
 def main(args, share_to='clipboard'):
@@ -106,11 +104,12 @@ def main(args, share_to='clipboard'):
         print "No arguments specified.\nType 'clipcloud help' for help."
         return
 
-    if args[1] == 'screenshot':
+    if args[1] == 'snap':
         """
         Take a screenshot and upload it to Dropbox.
         """
-        mode = 'snap'
+        from screenshot import capture
+        mode = 'screen'
         if len(args) > 2 and args[2] in ['screen', 'draw']:
             mode = args[2]
 
@@ -127,6 +126,8 @@ def main(args, share_to='clipboard'):
             print 'You must specify one or more files or folders'
 
     elif args[1] == 'text':
+        # gist functionality on hold - dropbox works fine for now
+        # from gist import Gist
         # Upload some the contents of the user's clipboard to Dropbox as a text file
         service = 'dropbox'
         extension = 'txt'  # The Dropbox file viewer has inbuilt syntax highlighting so the file extension is relevant
