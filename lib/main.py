@@ -54,7 +54,7 @@ def handle_files(paths, filenames, share_to):
         _file = files[0]
         d.upload(_file, filepath=filenames[0])
         link = d.get_link('/' + filenames[0])
-        local_paths = _file
+        local_paths = [_file]
 
     # Otherwise it's more complicated.
     # We could have multiple files, one folder, multiple folders, or a mix of files and folders
@@ -64,7 +64,7 @@ def handle_files(paths, filenames, share_to):
         folder = folders[0]
         d.upload_folder(folder)
         link = d.get_link('/' + folder)
-        local_paths = folder
+        local_paths = [folder]
 
     # If we've got to here, we have multiple files and folders
     else:
@@ -159,17 +159,26 @@ def main(args, share_to='clipboard'):
         direction = 'a'  # ascending
         limit = 10
         sort_by = 'id'
+        start = 1
 
         if len(args) > 2:
-            limit = int(args[2])
-
+            try:
+                limit = int(args[2])
+            except:
+                print 'Limit must be a positive integer'
             if len(args) > 3 and args[3] in 'ad':
                 direction = args[3]
 
                 if len(args) > 4 and args[4] in ['id', 'url', 'path', 'timestamp']:
                     sort_by = args[4]
 
-        History().display(limit, sort_by, direction)
+                    if len(args) > 5:
+                        try:
+                            start = int(args[5])
+                        except:
+                            print 'Start must be a positive integer'
+
+        History().display(limit, sort_by, direction, start)
 
     # Do something with a previous file
     elif args[1] == 'revisit':

@@ -12,7 +12,7 @@ class History:
     def __init__(self):
         self.history = PyJson(HISTORY_PATH, base={'history': []})
 
-    def display(self, limit, sort_by, direction):
+    def display(self, limit, sort_by, direction, start):
         """
         Load the history and print out a number of records to the screen.
 
@@ -28,7 +28,7 @@ class History:
         widths = [len(thing) for thing in header]
         grid = [header]
 
-        for record in history:
+        for record in history[start - 1:]:
             if limit == 0:
                 break
 
