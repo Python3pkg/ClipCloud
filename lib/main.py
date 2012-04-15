@@ -53,7 +53,7 @@ def handle_files(paths, filenames, share_to):
     if num_files == 1 and num_folders == 0:
         _file = files[0]
         d.upload(_file, filepath=filenames[0])
-        link = d.get_link('/' + _file)
+        link = d.get_link('/' + filenames[0])
         local_paths = _file
 
     # Otherwise it's more complicated.
@@ -108,14 +108,15 @@ def main(args, share_to='clipboard'):
         """
         Take a screenshot and upload it to Dropbox.
         """
-        from screenshot import capture
+        from screenshot import Screenshot
         mode = 'screen'
         if len(args) > 2 and args[2] in ['screen', 'draw']:
             mode = args[2]
 
-        path, filename = capture(mode)
+        path, filename = Screenshot().capture(mode)
+        print path, filename
 
-        handle_file(path, filename, share_to)
+        handle_files([path], [filename], share_to)
 
     elif args[1] == 'up':
         # Upload the files and folders from the list the user passed in to Dropbox
@@ -145,7 +146,7 @@ def main(args, share_to='clipboard'):
             f.write(clipboard)
             f.close()
 
-            handle_file(path, filename, share_to)
+            handle_files([path], [filename], share_to)
 
         #elif service == 'gist':
         #    Gist().upload(filename, clipboard)
@@ -199,7 +200,7 @@ def main(args, share_to='clipboard'):
             return
 
         if operation == 'reupload':
-            handle_file(record['path'], 'a', 'clipboard')
+            handle_file([record['path']], [record['path']], 'clipboard')
 
         elif operation == 'open_local':
             if PLATFORM == 'Windows':
