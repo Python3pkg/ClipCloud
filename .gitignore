@@ -1,6 +1,7 @@
 lib/api.json
 *.sublime-project
 *.sublime-workspace
+test
 test.txt
 test.png
 *.pyc
