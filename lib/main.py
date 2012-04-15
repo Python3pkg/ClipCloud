@@ -90,7 +90,7 @@ def handle_files(paths, filenames, share_to):
     save_link(link, local_paths, share_to)
 
 
-def main(args, share_to='clipboard'):
+def main(args, opts):
     """
     Parse arguments passed to the program and act upon the results
 
@@ -103,6 +103,8 @@ def main(args, share_to='clipboard'):
     if len(args) <= 1:
         print "No arguments specified.\nType 'clipcloud help' for help."
         return
+
+    share_to = opts.share
 
     if args[1] == 'snap':
         """
@@ -156,29 +158,7 @@ def main(args, share_to='clipboard'):
 
     elif args[1] == 'history':
         # Display the history of previously uploaded file
-        direction = 'a'  # ascending
-        limit = 10
-        sort_by = 'id'
-        start = 1
-
-        if len(args) > 2:
-            try:
-                limit = int(args[2])
-            except:
-                print 'Limit must be a positive integer'
-            if len(args) > 3 and args[3] in 'ad':
-                direction = args[3]
-
-                if len(args) > 4 and args[4] in ['id', 'url', 'path', 'timestamp']:
-                    sort_by = args[4]
-
-                    if len(args) > 5:
-                        try:
-                            start = int(args[5])
-                        except:
-                            print 'Start must be a positive integer'
-
-        History().display(limit, sort_by, direction, start)
+        History().display(opts.limit, opts.sort_by, opts.direction, opts.start)
 
     # Do something with a previous file
     elif args[1] == 'revisit':

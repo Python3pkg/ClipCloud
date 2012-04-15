@@ -39,13 +39,30 @@ def clipcloud():
 
     # Add command line options
     parser = OptionParser()
+
     parser.add_option('-s', '--share', dest='share',
         help="share a link to the file to a social media site",
         metavar='SHARE', default='clipboard', choices=SHARING_SERVICES)
 
+    parser.add_option('-l', '--limit', dest='limit', type='int',
+        help="The number of records in the history database to show",
+        metavar='LIMIT', default=10)
+
+    parser.add_option('-d', '--direction', dest='direction',
+        help="The direction to sort the results by - ascending or descending",
+        metavar='DIR', default='a', choices=['a', 'd'])
+
+    parser.add_option('-t', '--sort-by', dest='sort_by',
+        help="The field to sort the history results by",
+        metavar='SORT', default='id', choices=['id', 'url', 'path', 'timestamp'])
+
+    parser.add_option('-b', '--start', dest='start', type='int',
+        help="The ID of the record to start the history table at",
+        metavar='START', default=1)
+
     options, args = parser.parse_args()
 
     # finally send the command line arguments off to be processed
-    main(argv, options.share)
+    main(argv, options)
 
 clipcloud()
