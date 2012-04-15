@@ -24,20 +24,51 @@ class History:
 
         history = sorted(self.history.doc['history'], key=lambda k: k[sort_by], reverse=direction == 'd')
 
-        print "Id, URL, Local File, Date Created"
+        header = ['Id', 'URL', 'Local File', 'Date Created']
+        widths = [len(thing) for thing in header]
+        grid = [header]
 
         for record in history:
             if limit == 0:
-                return
+                break
 
-            id = record['id']
+            _id = str(record['id'])
             url = record['url']
             path = record['path']
             _date = date.fromtimestamp(record['timestamp']).strftime('%d/%m/%Y')
 
-            print id, url, path, _date
+            row = [_id, url, path, _date]
+
+            i = 0
+            for thing in row:
+                length = len(thing)
+                if length > widths[i]:
+                    widths[i] = length
+                i += 1
+
+            grid.append(row)
 
             limit -= 1
+
+        gridstring = '\n'
+
+        for row in grid:
+            i = 0
+            rowstring = ''
+
+            for cell in row:
+                diff = widths[i] - len(cell)
+                padding = ' ' * diff
+                cell = ' ' + cell + padding
+                rowstring += cell + ' |'
+                i += 1
+            rowstring = rowstring[:-1]
+            gridstring += rowstring + '\n'
+
+            if row == header:
+                gridstring += '-' * len(rowstring) + '\n'
+
+        print gridstring[:-1]
 
     def add(self, path, url):
         """

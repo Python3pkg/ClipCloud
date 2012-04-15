@@ -21,10 +21,6 @@ TMP_PATH = os.path.join(APP_PATH, 'tmp')
 # file to store history in
 HISTORY_PATH = os.path.join(APP_PATH, 'history.json')
 
-# path to c# utility script
-UTILS_SCRIPT = os.path.join(os.path.dirname(__file__), '../clipcloud.exe')
-SNIPPING_TOOL = os.path.join(os.path.dirname(__file__), '../snip.exe')
-
 # path to file in which the Oauth access token for connecting to dropbox is stored
 TOKEN_PATH = os.path.join(APP_PATH, 'token.json')
 GITHUB_TOKEN_PATH = os.path.join(APP_PATH, 'github_token.json')

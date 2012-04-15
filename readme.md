@@ -14,7 +14,7 @@ It has only been primarily tested on Windows but most functionality also works o
 - `revisit <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `reupload`, `open_remote` or `open_local`.
 - `text [extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
 
-##Options
+##Options:
 - `-s` `--share`: Specify what to do with the link to the upload file. Current options are sharing to Facebook, Twitter, Email or setting the clipboard. Defaults to `clipboard`.
 
 ##Todo:
