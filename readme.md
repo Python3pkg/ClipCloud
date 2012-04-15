@@ -9,10 +9,10 @@ It has only been primarily tested on Windows but most functionality also works o
 ##Arguments:
 - `help`: Display the help file.
 - `up </path/to/file/or/folder> [second file, third file...]`: Upload the specified files and folders.
-- `snap <mode>`: Take a screenshot and upload it. Mode can be `draw` or `screen`. Defaults to `screen`.
-- `history [number_of_items]`: Show a history of the files you've uploaded previously. Defaults to the last 10 records.
+- `snap [-m mode]`: Take a screenshot and upload it. Mode can be `draw` or `screen`. Defaults to `screen`.
+- `history [-l number_of_records] [-t sort_by] [-b start] [-d direction]`: Show a history of the files you've uploaded previously. Defaults to the last 10 records.
 - `revisit <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `reupload`, `open_remote` or `open_local`.
-- `text [extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
+- `text [-e extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
 
 ##Options:
 - `-s` `--share`: Specify what to do with the link to the upload file. Current options are sharing to Facebook, Twitter, Email or setting the clipboard. Defaults to `clipboard`.
