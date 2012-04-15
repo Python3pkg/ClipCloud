@@ -111,13 +111,8 @@ def main(args, opts):
         Take a screenshot and upload it to Dropbox.
         """
         from screenshot import Screenshot
-        mode = 'screen'
-        if len(args) > 2 and args[2] in ['screen', 'draw']:
-            mode = args[2]
 
-        path, filename = Screenshot().capture(mode)
-        print path, filename
-
+        path, filename = Screenshot().capture(opts.mode)
         handle_files([path], [filename], share_to)
 
     elif args[1] == 'up':
