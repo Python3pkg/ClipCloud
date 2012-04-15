@@ -60,6 +60,15 @@ def clipcloud():
         help="The ID of the record to start the history table at",
         metavar='START', default=1)
 
+    # The Dropbox file viewer has inbuilt syntax highlighting so the file extension is relevant
+    parser.add_option('-e', '--extension', dest='extension',
+        help="The extension of the file to save the snippet of text to",
+        metavar='EXT', default='txt')
+
+    parser.add_option('-m', '--mode', dest='mode',
+        help="The way the area of the screen to be captured is defined",
+        metavar='MODE', default='screen', choices=['screen', 'draw'])
+
     options, args = parser.parse_args()
 
     # finally send the command line arguments off to be processed

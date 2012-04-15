@@ -129,18 +129,15 @@ def main(args, opts):
             print 'You must specify one or more files or folders'
 
     elif args[1] == 'text':
+        """Upload some the contents of the user's clipboard as a text file"""
+
         # gist functionality on hold - dropbox works fine for now
         # from gist import Gist
-        # Upload some the contents of the user's clipboard to Dropbox as a text file
         service = 'dropbox'
-        extension = 'txt'  # The Dropbox file viewer has inbuilt syntax highlighting so the file extension is relevant
-
-        if len(args) > 2:
-            extension = args[2]
 
         clipboard = Clipboard().get()
 
-        filename = 'text_snippet_%d.%s' % (time(), extension)
+        filename = 'text_snippet_%d.%s' % (time(), opts.extension)
         path = os.path.join(TMP_PATH, filename)
 
         if service == 'dropbox':
