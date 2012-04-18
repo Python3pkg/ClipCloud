@@ -23,6 +23,9 @@ def save_link(link, paths, share_to):
     # and then send the link to its destination, be that clipboard or social network.
     if share_to == 'clipboard':
         Clipboard().set(link)
+    elif share_to == 'stdout':
+        import sys
+        sys.stdout.write(link)
     else:
         url = URLS[share_to] % (SHARE_MESSAGE, link)
         webbrowser.open(url, new=2)

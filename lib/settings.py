@@ -26,7 +26,7 @@ TOKEN_PATH = os.path.join(APP_PATH, 'token.json')
 GITHUB_TOKEN_PATH = os.path.join(APP_PATH, 'github_token.json')
 
 # services to send the link to the hosted file to
-SHARING_SERVICES = 'clipboard facebook twitter email'.split(' ')
+SHARING_SERVICES = 'clipboard facebook twitter email stdout'.split(' ')
 
 # default message when shared to a social network
 SHARE_MESSAGE = 'I just uploaded a file to ClipCloud - check it out.'

@@ -15,7 +15,7 @@ It has only been primarily tested on Windows but most functionality also works o
 - `text [-e extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
 
 ##Options:
-- `-s` `--share`: Specify what to do with the link to the upload file. Current options are sharing to Facebook, Twitter, Email or setting the clipboard. Defaults to `clipboard`.
+- `-s` `--share`: Specify what to do with the link to the uploaded file. Current options are sharing to Facebook, Twitter, Email, setting the clipboard or writing to stdout so you can pipe the url to other programs. Defaults to `clipboard`.
 
 ##Todo:
 - Package as a .exe for distribution to users without Python
