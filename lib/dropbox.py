@@ -16,7 +16,7 @@ import urlparse
 import oauth
 import webbrowser
 from lib.settings import *
-from lib.message import message
+from lib.message import Message
 
 
 def format_path(path):
@@ -49,7 +49,8 @@ class Dropbox:
         """
         Connect to the Dropbox servers so that files can be uploaded
         """
-        self.in_user_mode = in_user_mode
+        self.m = Message(in_user_mode=in_user_mode)
+
         api_details = json.load(open('lib/api.json'))['dropbox']
         session = DropboxSession(api_details['key'], api_details['secret'], self.ACCESS_TYPE)
 
@@ -115,19 +116,19 @@ class Dropbox:
         filepath = '/' + filepath
 
         try:
-            message('Uploading...', self.in_user_mode)
+            self.m.message('Uploading...')
             # Open the file located at path and upload it to the dropbox servers
             response = self.client.put_file(filepath, open(path, 'rb'))
-            message('Upload finished', self.in_user_mode)
+            self.m.message('Upload finished')
         except Exception as error:
-            message('Upload failed', self.in_user_mode)
+            self.m.message('Upload failed')
             if DEBUG:
                 print error
             return
 
         if DEBUG:
-            message(path, self.in_user_mode)
-            message(response, self.in_user_mode)
+            self.m.message(path)
+            self.m.message(response)
 
     def upload_folder(self, folder):
         self.create_folder(folder)
