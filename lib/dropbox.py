@@ -16,6 +16,7 @@ import urlparse
 import oauth
 import webbrowser
 from lib.settings import *
+from lib.message import message
 
 
 def format_path(path):
@@ -44,13 +45,11 @@ class Dropbox:
     # we only need access to one folder in the user's Dropbox, not the entire thing.
     ACCESS_TYPE = 'app_folder'
 
-    def __init__(self, proxy_host=None, proxy_port=None):
+    def __init__(self, in_user_mode=True):
         """
         Connect to the Dropbox servers so that files can be uploaded
         """
-        self.proxy_host = proxy_host
-        self.proxy_port = proxy_port
-
+        self.in_user_mode = in_user_mode
         api_details = json.load(open('lib/api.json'))['dropbox']
         session = DropboxSession(api_details['key'], api_details['secret'], self.ACCESS_TYPE)
 
@@ -93,7 +92,7 @@ class Dropbox:
             f.close()
 
         # create a client from the finished session
-        client = DropboxClient(session, self.proxy_port, self.proxy_host)
+        client = DropboxClient(session)
         #print client.account_info()
 
         self.client = client
@@ -116,19 +115,19 @@ class Dropbox:
         filepath = '/' + filepath
 
         try:
-            print 'Uploading...'
+            message('Uploading...', self.in_user_mode)
             # Open the file located at path and upload it to the dropbox servers
             response = self.client.put_file(filepath, open(path, 'rb'))
-            print "Upload finished"
+            message('Upload finished', self.in_user_mode)
         except Exception as error:
-            print "Upload failed"
+            message('Upload failed', self.in_user_mode)
             if DEBUG:
                 print error
             return
 
         if DEBUG:
-            print path
-            print response
+            message(path, self.in_user_mode)
+            message(response, self.in_user_mode)
 
     def upload_folder(self, folder):
         self.create_folder(folder)

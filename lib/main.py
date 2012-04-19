@@ -38,7 +38,8 @@ def handle_files(paths, filenames, share_to):
     - paths: An array of paths that can point to files or folders
     - share_to: The service to send the link to the uploaded files to
     """
-    d = Dropbox()
+    in_user_mode = share_to != 'stdout'
+    d = Dropbox(in_user_mode=in_user_mode)
 
     # Start by sorting the paths into two separate arrays for files and folders
     files = []
