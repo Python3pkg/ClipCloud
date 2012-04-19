@@ -39,20 +39,11 @@ URLS = {
 }
 
 HELP_MESSAGE = """
-ClipCloud is a program for easily sending files to your friends
-You can send an existing file, or take a screenshot and send that.
-When you upload a file, a link to it will be placed in your clipboard
-
-Options:
-    help: display this help file.
-    file /path/to/file: upload the specified file
-    screenshot [top, left, width, height]: take a screenshot and upload it.
-        If no arguments are specified, the enitre primary screen is used.
-    history [number_of_items]: show a history of the files you've uploaded previously.
-        defaults to the last 10 records.
-    record operation id: Do something with a previously uploaded file.
-        ID specifies which file to upload
-        operation can be either reupload, open_remote or open_local
+ClipCloud is a program for easily sharing all kinds of stuff
+You can send files and folders, or take a screenshot and send that.
+You can also send the contents of your clipboard as a text snippet.
+When you upload a file, a link to it will be placed in your clipboard,
+or you can share it to a social network or send it by email.
 """
 
 DEBUG = True

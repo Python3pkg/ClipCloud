@@ -15,10 +15,9 @@
 import os
 
 # for parsing command-line arguments and options
-from sys import argv
-from optparse import OptionParser
+from argparse import ArgumentParser
 
-from lib.main import main
+from lib.main import *
 from lib.settings import *
 
 
@@ -38,40 +37,65 @@ def clipcloud():
         os.makedirs(TMP_PATH)
 
     # Add command line options
-    parser = OptionParser()
+    # Create the master argument parser instance
+    parser = ArgumentParser(description=HELP_MESSAGE)
 
-    parser.add_option('-s', '--share', dest='share',
+    # Add any global options - ones that apply to all tools
+    parser.add_argument('-s', '--share', dest='share',
         help="share a link to the file to a social media site",
-        metavar='SHARE', default='clipboard', choices=SHARING_SERVICES)
+        default='clipboard', choices=SHARING_SERVICES)
 
-    parser.add_option('-l', '--limit', dest='limit', type='int',
-        help="The number of records in the history database to show",
-        metavar='LIMIT', default=10)
+    # Create the subparsers for each of the program's separate tools
+    subparsers = parser.add_subparsers()
 
-    parser.add_option('-d', '--direction', dest='direction',
-        help="The direction to sort the results by - ascending or descending",
-        metavar='DIR', default='a', choices=['a', 'd'])
+    # Create the parser for options that only apply to uploading files and folders
+    upload_parser = subparsers.add_parser('up')
+    upload_parser.add_argument('filepaths', nargs='+')
+    upload_parser.set_defaults(func=upload)
 
-    parser.add_option('-t', '--sort-by', dest='sort_by',
-        help="The field to sort the history results by",
-        metavar='SORT', default='id', choices=['id', 'url', 'path', 'timestamp'])
+    # Create the parser for options that only apply to revisiting old uploads
+    revisit_parser = subparsers.add_parser('revisit')
+    revisit_parser.add_argument('operation',
+        choices=['open_local', 'open_remote', 'reupload'])
+    revisit_parser.add_argument('id', type=int)
+    revisit_parser.set_defaults(func=revisit)
 
-    parser.add_option('-b', '--start', dest='start', type='int',
-        help="The ID of the record to start the history table at",
-        metavar='START', default=1)
-
+    # Create the parser for options that only apply to sharing text snippets
+    text_parser = subparsers.add_parser('text')
+    text_parser.add_argument('-v', '--text-service', dest='text',
+        help="The hosting service to upload text snippets to",
+        default='dropbox', choices=['dropbox'])
     # The Dropbox file viewer has inbuilt syntax highlighting so the file extension is relevant
-    parser.add_option('-e', '--extension', dest='extension',
+    text_parser.add_argument('-e', '--extension', dest='extension',
         help="The extension of the file to save the snippet of text to",
-        metavar='EXT', default='txt')
+        default='txt')
+    text_parser.set_defaults(func=snippet)
 
-    parser.add_option('-m', '--mode', dest='mode',
+    # Create the parser for options that only apply to taking screenshots
+    screenshot_parser = subparsers.add_parser('snap')
+    screenshot_parser.add_argument('-m', '--mode', dest='mode',
         help="The way the area of the screen to be captured is defined",
-        metavar='MODE', default='screen', choices=['screen', 'draw'])
+        default='screen', choices=['screen', 'draw'])
+    screenshot_parser.set_defaults(func=screenshot)
 
-    options, args = parser.parse_args()
+    # Create the parser for options that only apply to viewing the history
+    history_parser = subparsers.add_parser('history')
+    history_parser.add_argument('-l', '--limit', dest='limit', type=int,
+        help="The number of records in the history database to show",
+        default=10, nargs=1)
+    history_parser.add_argument('-d', '--direction', dest='direction',
+        help="The direction to sort the results by - ascending or descending",
+        default='a', choices=['a', 'd'])
+    history_parser.add_argument('-t', '--sort-by', dest='sort_by',
+        help="The field to sort the history results by",
+        default='id', choices=['id', 'url', 'path', 'timestamp'])
+    history_parser.add_argument('-b', '--start', dest='start', type=int,
+        help="The ID of the record to start the history table at",
+        default=1)
+    history_parser.set_defaults(func=history)
 
-    # finally send the command line arguments off to be processed
-    main(argv, options)
+    # finally parse all arguments run the relevant function
+    args = parser.parse_args()
+    args.func(args)
 
 clipcloud()
