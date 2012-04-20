@@ -75,7 +75,7 @@ def handle_files(paths, filenames, share_to):
         _file = files[0]
         d.upload(_file, filepath=filenames[0])
         link = d.get_link('/' + filenames[0])
-        local_paths = [_file]
+        local_paths = [os.path.abspath(_file)]
 
     # Otherwise it's more complicated.
     # We could have multiple files, one folder, multiple folders, or a mix of files and folders
@@ -85,7 +85,7 @@ def handle_files(paths, filenames, share_to):
         folder = folders[0]
         d.upload_folder(folder)
         link = d.get_link('/' + folder)
-        local_paths = [folder]
+        local_paths = [os.path.abspath(folder)]
 
     # If we've got to here, we have multiple files and folders
     else:
@@ -106,7 +106,7 @@ def handle_files(paths, filenames, share_to):
             d.upload_folder(folder_name)
 
         link = d.get_link('/' + d.final_folder_name)
-        local_paths = files
+        local_paths = [os.path.abspath(_file) for _file in files]
 
     save_link(link, local_paths, share_to)
 
