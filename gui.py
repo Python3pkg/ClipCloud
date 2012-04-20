@@ -1,4 +1,4 @@
-from tray import SysTrayIcon
+from lib.tray import SysTrayIcon
 from lib.history import History
 
 hover_text = "ClipCloud"

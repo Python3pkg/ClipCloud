@@ -34,23 +34,18 @@ def format_grid(grid, divider_positions=[]):
 
     a = []  # final grid array
     for row in grid:
-        b = []  # final row array
+        # truncate column 3 if the table would be wider than the terminal window
+        # id, url and date don't vary much in width, only the local path is worth truncating
+        if terminal_diff is not None and len(row[2]) > widths[2]:
+            row[2] = row[2][:terminal_diff - 3] + '...'
 
-        for cell, width in zip(row, widths):
-            length = len(cell)
-            # truncate this column if the table would be wider than the terminal window
-            # id, url and date don't vary much in width, only the local path is worth truncating
-            if cell == row[2] and terminal_diff is not None and length > widths[2]:
-                cell = cell[:terminal_diff - 3] + '...'
-
-            # pad with spaces so all cells in the column are the same width
-            b.append(cell + ' ' * (width - length))
-
-        # join the columns into a string with a divider between and add the row to the final grid
-        a.append(' ' + ' | '.join(b))
+        # format the cells into a string with dividers between and add the row to the final grid
+        # and pad with spaces so all cells in the column are the same width
+        s = ((' {:%d} |' * len(widths))[:-1] % tuple(widths)).format(*row)
+        a.append(s)
 
     # add a horizontal divider only below the header
-    width = len(a[0])
+    width = len(s)
     for pos, i in zip(divider_positions, xrange(len(divider_positions))):
         a.insert(pos + i, '-' * width)
 
