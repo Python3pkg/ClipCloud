@@ -3,6 +3,7 @@ from Tkinter import Tk
 
 class Clipboard:
     def get(self):
+        """Return the contents of the user's clipboard if it is plain text"""
         try:
             return Tk().clipboard_get()
         except:

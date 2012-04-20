@@ -7,12 +7,17 @@ from history import History
 from settings import *
 from pyjson import PyJson
 from clipboard import Clipboard
-
-# for uploading to Dropbox
 from dropbox import Dropbox
 
 
 def save_link(link, paths, share_to):
+    """
+    Save the details of an uploaded file to the history file and send the link to its destination
+    Arguments:
+    - link: The link to the uploaded file
+    - paths: An array of paths to all the files and folders that were uploaded
+    - share_to: A string representing the destination of the link - clipboard, social network or stdout
+    """
     if not link:
         return
 
@@ -96,9 +101,7 @@ def handle_files(paths, filenames, share_to):
 
 
 def screenshot(args):
-    """
-    Take a screenshot and upload it to Dropbox.
-    """
+    """Take a screenshot and upload it to Dropbox."""
     from screenshot import Screenshot
 
     path, filename = Screenshot().capture(args.mode)
@@ -106,12 +109,12 @@ def screenshot(args):
 
 
 def upload(args):
-    # Upload the files and folders from the list the user passed in to Dropbox
+    """Upload the files and folders from the list the user passed in to Dropbox"""
     handle_files(args.filepaths, args.filepaths, args.share)
 
 
 def snippet(args):
-    """Upload some the contents of the user's clipboard as a text file"""
+    """Upload the contents of the user's clipboard as a text file"""
 
     # gist functionality on hold - dropbox works fine for now
     # from gist import Gist
@@ -135,7 +138,7 @@ def snippet(args):
 
 
 def history(args):
-    # Display the history of previously uploaded file
+    """Display the history of previously uploaded file"""
     History().display(args.limit, args.sort_by, args.direction, args.start)
 
 
@@ -160,7 +163,7 @@ def revisit(args):
         if PLATFORM == 'Windows':
             Popen(r'explorer /select,"%s"' % record['path'])
         elif PLATFORM == 'Darwin':
-            call(["open", "-R", record['path']])
+            call(['open', '-R', record['path']])
 
     elif args.operation == 'open_remote':
         webbrowser.open(record['url'], new=2)

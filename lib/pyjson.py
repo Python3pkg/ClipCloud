@@ -12,12 +12,15 @@ def save_json(d):
 
 class PyJson:
     """
-    Class to abstract the process of reading, writing and parsing json files,
-    using Python's json module.
+    Class to abstract the process of reading, writing and parsing JSON files
+    using Python's inbuilt json module.
     """
     def __init__(self, path, base={}):
         """
-        Create the file if it does not exist and add an empty json object to it
+        Create the file if it does not exist and add an empty JSON object to it
+        Arguments:
+        - path: The path to the file to store the JSON in
+        - base: The root structure of the JSON document
         """
         self.path = path
 
@@ -34,15 +37,15 @@ class PyJson:
         f.close()
 
     def add(self, key, value):
-        """Add a record to the python dictionary"""
+        """Add a record to the Python dictionary"""
         self.doc[key] = value
 
     def remove(self, key):
-        """Remove a record from the python dictionary"""
+        """Remove a record from the Python dictionary"""
         self.doc[key] = None
 
     def save(self):
-        """Save a json representation of the python dictionary to the file"""
+        """Save a json representation of the Python dictionary to the file"""
         f = open(self.path, 'w')
         f.write(json.dumps(self.doc, sort_keys=True, indent=4))
         f.close()
