@@ -47,3 +47,4 @@ or you can share it to a social network or send it by email.
 """
 
 DEBUG = True
+TIMER_ACTIVATED = True

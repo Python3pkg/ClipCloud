@@ -98,4 +98,13 @@ def clipcloud():
     args = parser.parse_args()
     args.func(args)
 
-clipcloud()
+# Don't do anything if this file is being imported as a module
+if __name__ == '__main__':
+    # If program execution time is being measured, call the main function from a timer
+    if TIMER_ACTIVATED:
+        from timeit import Timer
+        t = Timer('clipcloud.clipcloud()', 'import clipcloud')
+        print t.timeit(number=1)
+    # Otherwise just call it
+    else:
+        clipcloud()
