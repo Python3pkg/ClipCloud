@@ -3,7 +3,12 @@ from Tkinter import Tk
 
 class Clipboard:
     def get(self):
-        return Tk().clipboard_get()
+        try:
+            return Tk().clipboard_get()
+        except:
+            print 'Could not get the contents of the clipboard.\n' + \
+                'Are you sure that you currently have only plain text copied?'
+            return None
 
     def set(self, link):
         """

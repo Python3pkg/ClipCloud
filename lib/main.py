@@ -117,6 +117,8 @@ def snippet(args):
     # from gist import Gist
 
     clipboard = Clipboard().get()
+    if clipboard is None:
+        return
 
     filename = 'text_snippet_%d.%s' % (time(), args.extension)
     path = os.path.join(TMP_PATH, filename)
