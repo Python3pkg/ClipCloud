@@ -50,11 +50,22 @@ def handle_files(paths, filenames, share_to):
     # Start by sorting the paths into two separate arrays for files and folders
     files = []
     folders = []
+    non_existent = []
+
     for path in paths:
-        if os.path.isdir(path):
-            folders.append(path)
+        if os.path.exists(path):
+            if os.path.isdir(path):
+                folders.append(path)
+            else:
+                files.append(path)
         else:
-            files.append(path)
+            non_existent.append(path)
+
+    if len(non_existent) > 0:
+        print "Some files or folders you tried to upload don't exist"
+        print "They are: %s" % ', '.join(non_existent)
+        return
+
     num_files = len(files)
     num_folders = len(folders)
 
