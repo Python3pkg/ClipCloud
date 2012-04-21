@@ -43,7 +43,7 @@ class History:
 
             limit -= 1
 
-        print format_grid(grid, divider_positions=[1])
+        print format_grid(grid, divider_positions=[1], truncatable_column=2)
 
     def add(self, path, url):
         """
