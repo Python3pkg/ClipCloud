@@ -50,26 +50,35 @@ class Screenshot:
     def take_screenshot(self, pos=None):
         """
         Capture the pixel data of the screen and save it to a PNG filename
+
         Arguments
         - pos: A tuple of length 4 defining the top, left, height and width of the rectangle to capture
         If omitted it defaults to the entire screen
         """
+
+        # Create a new Device Context representing the user's primary screen
         screen = wx.ScreenDC()
 
+        # Determine the position and dimensions of the screenshot
         if pos:
             x, y, width, height = pos
         else:
             x, y = 0, 0
             width, height = screen.GetSize()
 
+        # Create a bitmap object to represent the final image
         bmp = wx.EmptyBitmap(width, height)
+        # Create a Device Context to hold the pixel data
         mem = wx.MemoryDC(bmp)
+        # Write the pixel data of the screen to the Device Context
         mem.Blit(0, 0, width, height, screen, x, y)
+        # Free up memory by releasing the pixel data
+        del mem
 
-        del mem  # Release bitmap data from memory
-
+        # Create a unique filename for the screenshot from the current time
         filename = 'screenshot_' + str(int(time())) + '.png'
         path = os.path.join(SCREENSHOT_PATH, filename)
+        # Save the bitmap data to the file
         bmp.SaveFile(path, wx.BITMAP_TYPE_PNG)
 
         self.path = path
@@ -78,9 +87,12 @@ class Screenshot:
     def capture(self, mode):
         """
         Take a screenshot
+
         Arguments:
         - mode: The type of screenshot to capture, either the entire screen or a custom rectangle
-        Returns: the path to the image file that the screenshot was saved to
+
+        Returns: The path to the image file that the screenshot was saved to
+        and the name of the file without the full path
         """
 
         self.app = wx.App(False)

@@ -15,9 +15,11 @@ class PyJson:
     Class to abstract the process of reading, writing and parsing JSON files
     using Python's inbuilt json module.
     """
+
     def __init__(self, path, base={}):
         """
         Create the file if it does not exist and add an empty JSON object to it
+
         Arguments:
         - path: The path to the file to store the JSON in
         - base: The root structure of the JSON document

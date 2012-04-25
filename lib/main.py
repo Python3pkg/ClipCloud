@@ -1,3 +1,5 @@
+""""""
+
 import os
 from subprocess import Popen, call
 import webbrowser
@@ -13,6 +15,7 @@ from dropbox import Dropbox
 def save_link(link, paths, share_to):
     """
     Save the details of an uploaded file to the history file and send the link to its destination
+
     Arguments:
     - link: The link to the uploaded file
     - paths: An array of paths to all the files and folders that were uploaded
@@ -39,6 +42,7 @@ def save_link(link, paths, share_to):
 def handle_files(paths, filenames, share_to):
     """
     Respond to the user attempting to upload one or more files or a folders
+
     Arguments:
     - paths: An array of paths that can point to files or folders
     - filenames: An array of filenames without the full path to them, that corresponds to the files in paths
@@ -113,6 +117,7 @@ def handle_files(paths, filenames, share_to):
 
 def screenshot(args):
     """Take a screenshot and upload it to Dropbox."""
+
     from screenshot import Screenshot
 
     path, filename = Screenshot().capture(args.mode)
@@ -121,6 +126,7 @@ def screenshot(args):
 
 def upload(args):
     """Upload the files and folders from the list the user passed in to Dropbox"""
+
     handle_files(args.filepaths, args.filepaths, args.share)
 
 
@@ -150,6 +156,7 @@ def snippet(args):
 
 def history(args):
     """Display the history of previously uploaded file"""
+
     History().display(args.limit, args.sort_by, args.direction, args.start)
 
 

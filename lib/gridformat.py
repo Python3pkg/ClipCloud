@@ -1,11 +1,13 @@
 def format_grid(grid, divider_positions=[], truncatable_column=None):
     """
     Format a 2d array of values in to a well-formatted, aligned gridstring
+
     Arguments:
     - grid: A rectangular 2d array of values
     - divider_positions: an array of integers specifying the rows of the grid to add dividers
     to defaults to no dividers
     - truncatable_column: An integer specifying a column whose data can be sensibly truncated
+
     Returns: The grid as a nicely formatted string, with padding, dividers and
     truncation if it is wider than the terminal window
     """

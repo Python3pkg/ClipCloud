@@ -10,6 +10,7 @@ class History:
     Defines methods for interacting with the file that stores
     a history of the files that the user has uploaded to the service
     """
+
     def __init__(self):
         self.history = PyJson(HISTORY_PATH, base={'history': []})
 
@@ -48,10 +49,12 @@ class History:
     def add(self, path, url):
         """
         Write a new record to the history
+
         Arguments:
         - path: the path to the local copy of the file that was uploaded
         - url: the shortened URl that points to the copy of the file hosted on the users dropbox acount
         """
+
         history = self.history.doc['history']
 
         id = 1 if len(history) == 0 else history[-1]['id'] + 1

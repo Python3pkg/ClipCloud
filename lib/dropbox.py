@@ -1,8 +1,4 @@
-"""
-The main client API you'll be working with most often.  You'll need to
-configure a dropbox.session.DropboxSession for this to work, but otherwise
-it's fairly self-explanatory.
-"""
+"""The Dropbox API and several methods to abstract common operations"""
 
 import re
 import simplejson as json
@@ -38,17 +34,14 @@ def format_path(path):
 
 
 class Dropbox:
-    """
-    Methods for interacting with the Dropbox APIs
-    """
+    """Methods for interacting with the Dropbox API"""
 
     # we only need access to one folder in the user's Dropbox, not the entire thing.
     ACCESS_TYPE = 'app_folder'
 
     def __init__(self, in_user_mode=True):
-        """
-        Connect to the Dropbox servers so that files can be uploaded
-        """
+        """Connect to the Dropbox servers so that files can be uploaded"""
+
         self.m = Message(in_user_mode=in_user_mode)
 
         api_details = json.load(open('lib/api.json'))['dropbox']
@@ -100,7 +93,8 @@ class Dropbox:
 
     def upload(self, path, filepath=None):
         """
-        Upload a file to the dropbox servers
+        Upload a file to the Dropbox servers
+
         Arguments:
         - path: The path to the local copy of the file to be uploaded
         - filename: The path, including the filename given to the remote copy of the file
@@ -131,19 +125,47 @@ class Dropbox:
             self.m.message(response)
 
     def upload_folder(self, folder):
+        """
+        Upload a folder to the Dropbox servers
+
+        Arguments:
+        - folder: A string representing the path to the folder to be uploaded
+        """
+
+        # Create a folder in the user's Dropbox with the same name as the local folder
         self.create_folder(folder)
 
+        # Recursively iterate through the contents of the folder
         for dirname, dirnames, filenames in os.walk(folder):
+            # Create subfolders on Dropbox for each local subfolder
             for subdirname in dirnames:
                 f = dirname + '/' + subdirname
                 self.create_folder(f)
+
+            # Upload each local file
             for filename in filenames:
                 self.upload(dirname + '/' + filename, filepath=self.final_folder_name + '/' + filename)
 
     def get_link(self, filename):
+        """
+        Get the URL of the copy of a file or folder hosted on Dropbox
+
+        Arguments:
+        - filename: The path to the file or folder within the user's Dropbox to get the URL of
+
+        Returns: A string containing the URL, in the format http://db.tt/xxxxxxxx
+        """
         return self.client.share('/' + filename)['url']
 
     def create_folder(self, folder_name, num=1):
+        """
+        Create a folder in the user's Dropbox
+
+        Arguments:
+        - folder_name: The name of the folder to create
+        - num: The number to append to the folder name if a folder with the specified name already exists
+        """
+
         new_folder_name = folder_name
 
         # Try to create a folder with the given name
@@ -164,6 +186,12 @@ class Dropbox:
         except ErrorResponse as e:
             if e.status == 403:
                 self.create_folder(folder_name, num=num + 1)
+
+"""
+The main client API you'll be working with most often.  You'll need to
+configure a dropbox.session.DropboxSession for this to work, but otherwise
+it's fairly self-explanatory.
+"""
 
 
 class DropboxClient(object):
