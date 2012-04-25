@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>lib.dropbox.DropboxSession</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="lib-module.html">Package&nbsp;lib</a> ::
+        <a href="lib.dropbox-module.html">Module&nbsp;dropbox</a> ::
+        Class&nbsp;DropboxSession
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="lib.dropbox.DropboxSession-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class DropboxSession</h1><p class="nomargin-top"><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">DropboxSession</strong>
+</pre>
+
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">consumer_key</span>,
+        <span class="summary-sig-arg">consumer_secret</span>,
+        <span class="summary-sig-arg">access_type</span>,
+        <span class="summary-sig-arg">locale</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initialize a DropboxSession object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="is_linked"></a><span class="summary-sig-name">is_linked</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return whether the DropboxSession has an access token attached.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.is_linked">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="unlink"></a><span class="summary-sig-name">unlink</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove any attached access token from the DropboxSession.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.unlink">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#set_token" class="summary-sig-name">set_token</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">access_token</span>,
+        <span class="summary-sig-arg">access_token_secret</span>)</span><br />
+      Attach an access token to the DropboxSession.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.set_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#set_request_token" class="summary-sig-name">set_request_token</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request_token</span>,
+        <span class="summary-sig-arg">request_token_secret</span>)</span><br />
+      Attach an request token to the DropboxSession.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.set_request_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#build_path" class="summary-sig-name">build_path</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">target</span>,
+        <span class="summary-sig-arg">params</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Build the path component for an API URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_path">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#build_url" class="summary-sig-name">build_url</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">host</span>,
+        <span class="summary-sig-arg">target</span>,
+        <span class="summary-sig-arg">params</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Build an API URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#build_authorize_url" class="summary-sig-name">build_authorize_url</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request_token</span>,
+        <span class="summary-sig-arg">oauth_callback</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Build a request token authorization URL.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_authorize_url">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#obtain_request_token" class="summary-sig-name">obtain_request_token</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Obtain a request token from the Dropbox API.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.obtain_request_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#obtain_access_token" class="summary-sig-name">obtain_access_token</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request_token</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Obtain an access token for a user.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.obtain_access_token">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="lib.dropbox.DropboxSession-class.html#build_access_headers" class="summary-sig-name">build_access_headers</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">method</span>,
+        <span class="summary-sig-arg">resource_url</span>,
+        <span class="summary-sig-arg">params</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">request_token</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Build OAuth access headers for a future request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_access_headers">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="API_VERSION"></a><span class="summary-name">API_VERSION</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="API_HOST"></a><span class="summary-name">API_HOST</span> = <code title="'api.dropbox.com'"><code class="variable-quote">'</code><code class="variable-string">api.dropbox.com</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="WEB_HOST"></a><span class="summary-name">WEB_HOST</span> = <code title="'www.dropbox.com'"><code class="variable-quote">'</code><code class="variable-string">www.dropbox.com</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="API_CONTENT_HOST"></a><span class="summary-name">API_CONTENT_HOST</span> = <code title="'api-content.dropbox.com'"><code class="variable-quote">'</code><code class="variable-string">api-content.dropbox.com</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">consumer_key</span>,
+        <span class="sig-arg">consumer_secret</span>,
+        <span class="sig-arg">access_type</span>,
+        <span class="sig-arg">locale</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Initialize a DropboxSession object.
+
+Your consumer key and secret are available
+at https://www.dropbox.com/developers/apps
+
+Args:
+    access_type: Either 'dropbox' or 'app_folder'. All path-based operations
+        will occur relative to either the user's Dropbox root directory
+        or your application's app folder.
+    locale: A locale string ('en', 'pt_PT', etc.) [optional]
+        The locale setting will be used to translate any user-facing error
+        messages that the server generates. At this time Dropbox supports
+        'en', 'es', 'fr', 'de', and 'ja', though we will be supporting more
+        languages in the future. If you send a language the server doesn't
+        support, messages will remain in English. Look for these translated
+        messages in rest.ErrorResponse exceptions as e.user_error_msg.
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_token</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">access_token</span>,
+        <span class="sig-arg">access_token_secret</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.set_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Attach an access token to the DropboxSession.</p>
+  <p>Note that the access 'token' is made up of both a token string and a 
+  secret string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_request_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_request_token</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request_token</span>,
+        <span class="sig-arg">request_token_secret</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.set_request_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Attach an request token to the DropboxSession.</p>
+  <p>Note that the reuest 'token' is made up of both a token string and a 
+  secret string.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="build_path"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">build_path</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">target</span>,
+        <span class="sig-arg">params</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_path">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Build the path component for an API URL.
+
+This method urlencodes the parameters, adds them
+to the end of the target url, and puts a marker for the API
+version in front.
+
+Args:
+    target: A target url (e.g. '/files') to build upon.
+    params: A dictionary of parameters (name to value). [optional]
+
+Returns:
+    The path and parameters components of an API URL.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="build_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">build_url</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">host</span>,
+        <span class="sig-arg">target</span>,
+        <span class="sig-arg">params</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Build an API URL.
+
+This method adds scheme and hostname to the path
+returned from build_path.
+
+Args:
+    target: A target url (e.g. '/files') to build upon.
+    params: A dictionary of parameters (name to value). [optional]
+
+Returns:
+    The full API URL.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="build_authorize_url"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">build_authorize_url</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request_token</span>,
+        <span class="sig-arg">oauth_callback</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_authorize_url">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Build a request token authorization URL.
+
+After obtaining a request token, you'll need to send the user to
+the URL returned from this function so that they can confirm that
+they want to connect their account to your app.
+
+Args:
+    request_token: A request token from obtain_request_token.
+    oauth_callback: A url to redirect back to with the authorized
+        request token.
+
+Returns:
+    An authorization for the given request token.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="obtain_request_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">obtain_request_token</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.obtain_request_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Obtain a request token from the Dropbox API.
+
+This is your first step in the OAuth process.  You call this to get a
+request_token from the Dropbox server that you can then use with
+DropboxSession.build_authorize_url() to get the user to authorize it.
+After it's authorized you use this token with
+DropboxSession.obtain_access_token() to get an access token.
+
+NOTE:  You should only need to do this once for each user, and then you
+can store the access token for that user for later operations.
+
+Returns:
+    An oauth.OAuthToken representing the request token Dropbox assigned
+    to this app. Also attaches the request token as self.request_token.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="obtain_access_token"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">obtain_access_token</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request_token</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.obtain_access_token">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Obtain an access token for a user.
+
+After you get a request token, and then send the user to the authorize
+URL, you can use the authorized request token with this method to get the
+access token to use for future operations. The access token is stored on
+the session object.
+
+Args:
+    request_token: A request token from obtain_request_token. [optional]
+        The request_token should have been authorized via the
+        authorization url from build_authorize_url. If you don't pass
+        a request_token, the fallback is self.request_token, which
+        will exist if you previously called obtain_request_token on this
+        DropboxSession instance.
+
+Returns:
+    An oauth.OAuthToken representing the access token Dropbox assigned
+    to this app and user. Also attaches the access token as self.token.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="build_access_headers"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">build_access_headers</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">method</span>,
+        <span class="sig-arg">resource_url</span>,
+        <span class="sig-arg">params</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">request_token</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="lib.dropbox-pysrc.html#DropboxSession.build_access_headers">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Build OAuth access headers for a future request.
+
+Args:
+    method: The HTTP method being used (e.g. 'GET' or 'POST').
+    resource_url: The full url the request will be made to.
+    params: A dictionary of parameters to add to what's already on the url.
+        Typically, this would consist of POST parameters.
+
+Returns:
+    A tuple of (header_dict, params) where header_dict is a dictionary
+    of header names and values appropriate for passing into dropbox.rest.RESTClient
+    and params is a dictionary like the one that was passed in, but augmented with
+    oauth-related parameters as appropriate.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 25 13:37:34 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

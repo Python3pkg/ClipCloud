@@ -9,8 +9,10 @@ APP_NAME = "ClipCloud"
 # root folder in AppData for storing data
 if PLATFORM == 'Darwin':
     APP_PATH = os.path.join(os.path.expanduser('~'), 'Library/Application Support/' + APP_NAME)
+elif PLATFORM == 'Linux':
+    APP_PATH = os.path.join(os.path.expanduser('~'), 'Library/Application Support/' + APP_NAME)
 else:
-    APP_PATH = os.path.join(os.environ['APPDATA'], APP_NAME)
+    APP_PATH = os.path.expanduser(os.path.join("~", "." + APP_NAME))
 
 # folder for storing screenshots
 SCREENSHOT_PATH = os.path.join(APP_PATH, 'img')

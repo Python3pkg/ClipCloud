@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>lib.history</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="lib-module.html">Package&nbsp;lib</a> ::
+        Module&nbsp;history
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="lib.history-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="lib.history-module.html">Module lib.history</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package lib=lib-module.html"><a title="lib" class="py-name" href="#" onclick="return doclink('link-0', 'lib', 'link-0');">lib</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module lib.settings=lib.settings-module.html"><a title="lib.settings" class="py-name" href="#" onclick="return doclink('link-1', 'settings', 'link-1');">settings</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Variable clipcloud.HISTORY_PATH=clipcloud-module.html#HISTORY_PATH,Variable lib.dropbox.HISTORY_PATH=lib.dropbox-module.html#HISTORY_PATH,Variable lib.gist.HISTORY_PATH=lib.gist-module.html#HISTORY_PATH,Variable lib.main.HISTORY_PATH=lib.main-module.html#HISTORY_PATH,Variable lib.screenshot.HISTORY_PATH=lib.screenshot-module.html#HISTORY_PATH,Variable lib.settings.HISTORY_PATH=lib.settings-module.html#HISTORY_PATH"><a title="clipcloud.HISTORY_PATH
+lib.dropbox.HISTORY_PATH
+lib.gist.HISTORY_PATH
+lib.main.HISTORY_PATH
+lib.screenshot.HISTORY_PATH
+lib.settings.HISTORY_PATH" class="py-name" href="#" onclick="return doclink('link-2', 'HISTORY_PATH', 'link-2');">HISTORY_PATH</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">time</tt> <tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">datetime</tt> <tt class="py-keyword">import</tt> <tt class="py-name">date</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module lib.pyjson=lib.pyjson-module.html"><a title="lib.pyjson" class="py-name" href="#" onclick="return doclink('link-3', 'pyjson', 'link-3');">pyjson</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class lib.pyjson.PyJson=lib.pyjson.PyJson-class.html"><a title="lib.pyjson.PyJson" class="py-name" href="#" onclick="return doclink('link-4', 'PyJson', 'link-4');">PyJson</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name" targets="Module lib.gridformat=lib.gridformat-module.html"><a title="lib.gridformat" class="py-name" href="#" onclick="return doclink('link-5', 'gridformat', 'link-5');">gridformat</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Function lib.gridformat.format_grid()=lib.gridformat-module.html#format_grid"><a title="lib.gridformat.format_grid" class="py-name" href="#" onclick="return doclink('link-6', 'format_grid', 'link-6');">format_grid</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="History"></a><div id="History-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="History-toggle" onclick="return toggle('History');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="lib.history.History-class.html">History</a><tt class="py-op">:</tt> </tt>
+</div><div id="History-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="History-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">    Defines methods for interacting with the file that stores</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-docstring">    a history of the files that the user has uploaded to the service</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="History.__init__"></a><div id="History.__init__-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="History.__init__-toggle" onclick="return toggle('History.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lib.history.History-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="History.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="History.__init__-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module lib.history=lib.history-module.html,Function lib.main.history()=lib.main-module.html#history"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-7', 'history', 'link-7');">history</a></tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="lib.pyjson.PyJson" class="py-name" href="#" onclick="return doclink('link-8', 'PyJson', 'link-4');">PyJson</a></tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="clipcloud.HISTORY_PATH
+lib.dropbox.HISTORY_PATH
+lib.gist.HISTORY_PATH
+lib.main.HISTORY_PATH
+lib.screenshot.HISTORY_PATH
+lib.settings.HISTORY_PATH" class="py-name" href="#" onclick="return doclink('link-9', 'HISTORY_PATH', 'link-2');">HISTORY_PATH</a></tt><tt class="py-op">,</tt> <tt class="py-name">base</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'history'</tt><tt class="py-op">:</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="History.display"></a><div id="History.display-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="History.display-toggle" onclick="return toggle('History.display');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lib.history.History-class.html#display">display</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">limit</tt><tt class="py-op">,</tt> <tt class="py-param">sort_by</tt><tt class="py-op">,</tt> <tt class="py-param">direction</tt><tt class="py-op">,</tt> <tt class="py-param">start</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="History.display-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="History.display-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">        Load the history and print out a number of records to the screen.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">        - limit: the number of items to show</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">        - direction: the order to sort the files in to, (ascending or descending)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-docstring">        - sort_by: the value to sort by (id, path, url or date)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-docstring">        - start: the record number to start at</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt id="link-10" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-10', 'history', 'link-7');">history</a></tt> <tt class="py-op">=</tt> <tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-11', 'history', 'link-7');">history</a></tt><tt class="py-op">.</tt><tt class="py-name">doc</tt><tt class="py-op">[</tt><tt class="py-string">'history'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name" targets="Variable lib.oauth.OAuthConsumer.key=lib.oauth.OAuthConsumer-class.html#key,Variable lib.oauth.OAuthToken.key=lib.oauth.OAuthToken-class.html#key"><a title="lib.oauth.OAuthConsumer.key
+lib.oauth.OAuthToken.key" class="py-name" href="#" onclick="return doclink('link-12', 'key', 'link-12');">key</a></tt><tt class="py-op">=</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">k</tt><tt class="py-op">:</tt> <tt class="py-name">k</tt><tt class="py-op">[</tt><tt class="py-name">sort_by</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">reverse</tt><tt class="py-op">=</tt><tt class="py-name">direction</tt> <tt class="py-op">==</tt> <tt class="py-string">'d'</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">grid</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">[</tt><tt class="py-string">'Id'</tt><tt class="py-op">,</tt> <tt class="py-string">'URL'</tt><tt class="py-op">,</tt> <tt class="py-string">'Local File'</tt><tt class="py-op">,</tt> <tt class="py-string">'Date Created'</tt><tt class="py-op">]</tt><tt class="py-op">]</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-comment"># iterate through the array of records, parse them and create a new 2d array of the formatted values</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">record</tt> <tt class="py-keyword">in</tt> <tt id="link-13" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-13', 'history', 'link-7');">history</a></tt><tt class="py-op">[</tt><tt class="py-name">start</tt> <tt class="py-op">-</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">limit</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                <tt class="py-keyword">break</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">            <tt class="py-name">_id</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">record</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">            <tt class="py-name">url</tt> <tt class="py-op">=</tt> <tt class="py-name">record</tt><tt class="py-op">[</tt><tt class="py-string">'url'</tt><tt class="py-op">]</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">record</tt><tt class="py-op">[</tt><tt class="py-string">'path'</tt><tt class="py-op">]</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">            <tt class="py-name">_date</tt> <tt class="py-op">=</tt> <tt class="py-name">date</tt><tt class="py-op">.</tt><tt class="py-name">fromtimestamp</tt><tt class="py-op">(</tt><tt class="py-name">record</tt><tt class="py-op">[</tt><tt class="py-string">'timestamp'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">strftime</tt><tt class="py-op">(</tt><tt class="py-string">'%d/%m/%Y'</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">            <tt class="py-name">row</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">_id</tt><tt class="py-op">,</tt> <tt class="py-name">url</tt><tt class="py-op">,</tt> <tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">_date</tt><tt class="py-op">]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">            <tt class="py-name">grid</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">row</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">            <tt class="py-name">limit</tt> <tt class="py-op">-=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt id="link-14" class="py-name"><a title="lib.gridformat.format_grid" class="py-name" href="#" onclick="return doclink('link-14', 'format_grid', 'link-6');">format_grid</a></tt><tt class="py-op">(</tt><tt class="py-name">grid</tt><tt class="py-op">,</tt> <tt class="py-name">divider_positions</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">truncatable_column</tt><tt class="py-op">=</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="History.add"></a><div id="History.add-def"><a name="L48"></a><tt class="py-lineno">48</tt> <a class="py-toggle" href="#" id="History.add-toggle" onclick="return toggle('History.add');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="lib.history.History-class.html#add">add</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">,</tt> <tt class="py-param">url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="History.add-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="History.add-expanded"><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-docstring">        Write a new record to the history</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-docstring">        Arguments:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-docstring">        - path: the path to the local copy of the file that was uploaded</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-docstring">        - url: the shortened URl that points to the copy of the file hosted on the users dropbox acount</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt id="link-15" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-15', 'history', 'link-7');">history</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-16', 'history', 'link-7');">history</a></tt><tt class="py-op">.</tt><tt class="py-name">doc</tt><tt class="py-op">[</tt><tt class="py-string">'history'</tt><tt class="py-op">]</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-name">id</tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-17', 'history', 'link-7');">history</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt> <tt class="py-keyword">else</tt> <tt id="link-18" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-18', 'history', 'link-7');">history</a></tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-number">1</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-19', 'history', 'link-7');">history</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">{</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">            <tt class="py-string">'id'</tt><tt class="py-op">:</tt> <tt class="py-name">id</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">            <tt class="py-string">'path'</tt><tt class="py-op">:</tt> <tt class="py-name">path</tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">            <tt class="py-string">'url'</tt><tt class="py-op">:</tt> <tt class="py-name">url</tt><tt class="py-op">,</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">            <tt class="py-string">'timestamp'</tt><tt class="py-op">:</tt> <tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="lib.history
+lib.main.history" class="py-name" href="#" onclick="return doclink('link-20', 'history', 'link-7');">history</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method lib.pyjson.PyJson.save()=lib.pyjson.PyJson-class.html#save"><a title="lib.pyjson.PyJson.save" class="py-name" href="#" onclick="return doclink('link-21', 'save', 'link-21');">save</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 25 13:37:34 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

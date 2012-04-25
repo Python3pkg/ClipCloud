@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>lib.settings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="lib-module.html">Package&nbsp;lib</a> ::
+        Module&nbsp;settings
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="lib.settings-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="lib.settings-module.html">Module lib.settings</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">platform</tt> <tt class="py-keyword">import</tt> <tt class="py-name">system</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable clipcloud.PLATFORM=clipcloud-module.html#PLATFORM,Variable lib.dropbox.PLATFORM=lib.dropbox-module.html#PLATFORM,Variable lib.gist.PLATFORM=lib.gist-module.html#PLATFORM,Variable lib.main.PLATFORM=lib.main-module.html#PLATFORM,Variable lib.screenshot.PLATFORM=lib.screenshot-module.html#PLATFORM,Variable lib.settings.PLATFORM=lib.settings-module.html#PLATFORM"><a title="clipcloud.PLATFORM
+lib.dropbox.PLATFORM
+lib.gist.PLATFORM
+lib.main.PLATFORM
+lib.screenshot.PLATFORM
+lib.settings.PLATFORM" class="py-name" href="#" onclick="return doclink('link-0', 'PLATFORM', 'link-0');">PLATFORM</a></tt> <tt class="py-op">=</tt> <tt class="py-name">system</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># name of the app.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable clipcloud.APP_NAME=clipcloud-module.html#APP_NAME,Variable lib.dropbox.APP_NAME=lib.dropbox-module.html#APP_NAME,Variable lib.gist.APP_NAME=lib.gist-module.html#APP_NAME,Variable lib.main.APP_NAME=lib.main-module.html#APP_NAME,Variable lib.screenshot.APP_NAME=lib.screenshot-module.html#APP_NAME,Variable lib.settings.APP_NAME=lib.settings-module.html#APP_NAME"><a title="clipcloud.APP_NAME
+lib.dropbox.APP_NAME
+lib.gist.APP_NAME
+lib.main.APP_NAME
+lib.screenshot.APP_NAME
+lib.settings.APP_NAME" class="py-name" href="#" onclick="return doclink('link-1', 'APP_NAME', 'link-1');">APP_NAME</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"ClipCloud"</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># root folder in AppData for storing data</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-2" class="py-name"><a title="clipcloud.PLATFORM
+lib.dropbox.PLATFORM
+lib.gist.PLATFORM
+lib.main.PLATFORM
+lib.screenshot.PLATFORM
+lib.settings.PLATFORM" class="py-name" href="#" onclick="return doclink('link-2', 'PLATFORM', 'link-0');">PLATFORM</a></tt> <tt class="py-op">==</tt> <tt class="py-string">'Darwin'</tt><tt class="py-op">:</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable clipcloud.APP_PATH=clipcloud-module.html#APP_PATH,Variable lib.dropbox.APP_PATH=lib.dropbox-module.html#APP_PATH,Variable lib.gist.APP_PATH=lib.gist-module.html#APP_PATH,Variable lib.main.APP_PATH=lib.main-module.html#APP_PATH,Variable lib.screenshot.APP_PATH=lib.screenshot-module.html#APP_PATH,Variable lib.settings.APP_PATH=lib.settings-module.html#APP_PATH"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-3', 'APP_PATH', 'link-3');">APP_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expanduser</tt><tt class="py-op">(</tt><tt class="py-string">'~'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Library/Application Support/'</tt> <tt class="py-op">+</tt> <tt id="link-4" class="py-name"><a title="clipcloud.APP_NAME
+lib.dropbox.APP_NAME
+lib.gist.APP_NAME
+lib.main.APP_NAME
+lib.screenshot.APP_NAME
+lib.settings.APP_NAME" class="py-name" href="#" onclick="return doclink('link-4', 'APP_NAME', 'link-1');">APP_NAME</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">elif</tt> <tt id="link-5" class="py-name"><a title="clipcloud.PLATFORM
+lib.dropbox.PLATFORM
+lib.gist.PLATFORM
+lib.main.PLATFORM
+lib.screenshot.PLATFORM
+lib.settings.PLATFORM" class="py-name" href="#" onclick="return doclink('link-5', 'PLATFORM', 'link-0');">PLATFORM</a></tt> <tt class="py-op">==</tt> <tt class="py-string">'Linux'</tt><tt class="py-op">:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt id="link-6" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-6', 'APP_PATH', 'link-3');">APP_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expanduser</tt><tt class="py-op">(</tt><tt class="py-string">'~'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Library/Application Support/'</tt> <tt class="py-op">+</tt> <tt id="link-7" class="py-name"><a title="clipcloud.APP_NAME
+lib.dropbox.APP_NAME
+lib.gist.APP_NAME
+lib.main.APP_NAME
+lib.screenshot.APP_NAME
+lib.settings.APP_NAME" class="py-name" href="#" onclick="return doclink('link-7', 'APP_NAME', 'link-1');">APP_NAME</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt id="link-8" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-8', 'APP_PATH', 'link-3');">APP_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expanduser</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-string">"~"</tt><tt class="py-op">,</tt> <tt class="py-string">"."</tt> <tt class="py-op">+</tt> <tt id="link-9" class="py-name"><a title="clipcloud.APP_NAME
+lib.dropbox.APP_NAME
+lib.gist.APP_NAME
+lib.main.APP_NAME
+lib.screenshot.APP_NAME
+lib.settings.APP_NAME" class="py-name" href="#" onclick="return doclink('link-9', 'APP_NAME', 'link-1');">APP_NAME</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># folder for storing screenshots</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable clipcloud.SCREENSHOT_PATH=clipcloud-module.html#SCREENSHOT_PATH,Variable lib.dropbox.SCREENSHOT_PATH=lib.dropbox-module.html#SCREENSHOT_PATH,Variable lib.gist.SCREENSHOT_PATH=lib.gist-module.html#SCREENSHOT_PATH,Variable lib.main.SCREENSHOT_PATH=lib.main-module.html#SCREENSHOT_PATH,Variable lib.screenshot.SCREENSHOT_PATH=lib.screenshot-module.html#SCREENSHOT_PATH,Variable lib.settings.SCREENSHOT_PATH=lib.settings-module.html#SCREENSHOT_PATH"><a title="clipcloud.SCREENSHOT_PATH
+lib.dropbox.SCREENSHOT_PATH
+lib.gist.SCREENSHOT_PATH
+lib.main.SCREENSHOT_PATH
+lib.screenshot.SCREENSHOT_PATH
+lib.settings.SCREENSHOT_PATH" class="py-name" href="#" onclick="return doclink('link-10', 'SCREENSHOT_PATH', 'link-10');">SCREENSHOT_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-11', 'APP_PATH', 'link-3');">APP_PATH</a></tt><tt class="py-op">,</tt> <tt class="py-string">'img'</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment"># folder for temporary files</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable clipcloud.TMP_PATH=clipcloud-module.html#TMP_PATH,Variable lib.dropbox.TMP_PATH=lib.dropbox-module.html#TMP_PATH,Variable lib.gist.TMP_PATH=lib.gist-module.html#TMP_PATH,Variable lib.main.TMP_PATH=lib.main-module.html#TMP_PATH,Variable lib.screenshot.TMP_PATH=lib.screenshot-module.html#TMP_PATH,Variable lib.settings.TMP_PATH=lib.settings-module.html#TMP_PATH"><a title="clipcloud.TMP_PATH
+lib.dropbox.TMP_PATH
+lib.gist.TMP_PATH
+lib.main.TMP_PATH
+lib.screenshot.TMP_PATH
+lib.settings.TMP_PATH" class="py-name" href="#" onclick="return doclink('link-12', 'TMP_PATH', 'link-12');">TMP_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-13', 'APP_PATH', 'link-3');">APP_PATH</a></tt><tt class="py-op">,</tt> <tt class="py-string">'tmp'</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># file to store history in</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable clipcloud.HISTORY_PATH=clipcloud-module.html#HISTORY_PATH,Variable lib.dropbox.HISTORY_PATH=lib.dropbox-module.html#HISTORY_PATH,Variable lib.gist.HISTORY_PATH=lib.gist-module.html#HISTORY_PATH,Variable lib.main.HISTORY_PATH=lib.main-module.html#HISTORY_PATH,Variable lib.screenshot.HISTORY_PATH=lib.screenshot-module.html#HISTORY_PATH,Variable lib.settings.HISTORY_PATH=lib.settings-module.html#HISTORY_PATH"><a title="clipcloud.HISTORY_PATH
+lib.dropbox.HISTORY_PATH
+lib.gist.HISTORY_PATH
+lib.main.HISTORY_PATH
+lib.screenshot.HISTORY_PATH
+lib.settings.HISTORY_PATH" class="py-name" href="#" onclick="return doclink('link-14', 'HISTORY_PATH', 'link-14');">HISTORY_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-15', 'APP_PATH', 'link-3');">APP_PATH</a></tt><tt class="py-op">,</tt> <tt class="py-string">'history.json'</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment"># path to file in which the Oauth access token for connecting to dropbox is stored</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable clipcloud.TOKEN_PATH=clipcloud-module.html#TOKEN_PATH,Variable lib.dropbox.TOKEN_PATH=lib.dropbox-module.html#TOKEN_PATH,Variable lib.gist.TOKEN_PATH=lib.gist-module.html#TOKEN_PATH,Variable lib.main.TOKEN_PATH=lib.main-module.html#TOKEN_PATH,Variable lib.screenshot.TOKEN_PATH=lib.screenshot-module.html#TOKEN_PATH,Variable lib.settings.TOKEN_PATH=lib.settings-module.html#TOKEN_PATH"><a title="clipcloud.TOKEN_PATH
+lib.dropbox.TOKEN_PATH
+lib.gist.TOKEN_PATH
+lib.main.TOKEN_PATH
+lib.screenshot.TOKEN_PATH
+lib.settings.TOKEN_PATH" class="py-name" href="#" onclick="return doclink('link-16', 'TOKEN_PATH', 'link-16');">TOKEN_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-17', 'APP_PATH', 'link-3');">APP_PATH</a></tt><tt class="py-op">,</tt> <tt class="py-string">'token.json'</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable clipcloud.GITHUB_TOKEN_PATH=clipcloud-module.html#GITHUB_TOKEN_PATH,Variable lib.dropbox.GITHUB_TOKEN_PATH=lib.dropbox-module.html#GITHUB_TOKEN_PATH,Variable lib.gist.GITHUB_TOKEN_PATH=lib.gist-module.html#GITHUB_TOKEN_PATH,Variable lib.main.GITHUB_TOKEN_PATH=lib.main-module.html#GITHUB_TOKEN_PATH,Variable lib.screenshot.GITHUB_TOKEN_PATH=lib.screenshot-module.html#GITHUB_TOKEN_PATH,Variable lib.settings.GITHUB_TOKEN_PATH=lib.settings-module.html#GITHUB_TOKEN_PATH"><a title="clipcloud.GITHUB_TOKEN_PATH
+lib.dropbox.GITHUB_TOKEN_PATH
+lib.gist.GITHUB_TOKEN_PATH
+lib.main.GITHUB_TOKEN_PATH
+lib.screenshot.GITHUB_TOKEN_PATH
+lib.settings.GITHUB_TOKEN_PATH" class="py-name" href="#" onclick="return doclink('link-18', 'GITHUB_TOKEN_PATH', 'link-18');">GITHUB_TOKEN_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="clipcloud.APP_PATH
+lib.dropbox.APP_PATH
+lib.gist.APP_PATH
+lib.main.APP_PATH
+lib.screenshot.APP_PATH
+lib.settings.APP_PATH" class="py-name" href="#" onclick="return doclink('link-19', 'APP_PATH', 'link-3');">APP_PATH</a></tt><tt class="py-op">,</tt> <tt class="py-string">'github_token.json'</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-comment"># services to send the link to the hosted file to</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable clipcloud.SHARING_SERVICES=clipcloud-module.html#SHARING_SERVICES,Variable lib.dropbox.SHARING_SERVICES=lib.dropbox-module.html#SHARING_SERVICES,Variable lib.gist.SHARING_SERVICES=lib.gist-module.html#SHARING_SERVICES,Variable lib.main.SHARING_SERVICES=lib.main-module.html#SHARING_SERVICES,Variable lib.screenshot.SHARING_SERVICES=lib.screenshot-module.html#SHARING_SERVICES,Variable lib.settings.SHARING_SERVICES=lib.settings-module.html#SHARING_SERVICES"><a title="clipcloud.SHARING_SERVICES
+lib.dropbox.SHARING_SERVICES
+lib.gist.SHARING_SERVICES
+lib.main.SHARING_SERVICES
+lib.screenshot.SHARING_SERVICES
+lib.settings.SHARING_SERVICES" class="py-name" href="#" onclick="return doclink('link-20', 'SHARING_SERVICES', 'link-20');">SHARING_SERVICES</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'clipboard facebook twitter email stdout'</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">' '</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-comment"># default message when shared to a social network</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt id="link-21" class="py-name" targets="Variable clipcloud.SHARE_MESSAGE=clipcloud-module.html#SHARE_MESSAGE,Variable lib.dropbox.SHARE_MESSAGE=lib.dropbox-module.html#SHARE_MESSAGE,Variable lib.gist.SHARE_MESSAGE=lib.gist-module.html#SHARE_MESSAGE,Variable lib.main.SHARE_MESSAGE=lib.main-module.html#SHARE_MESSAGE,Variable lib.screenshot.SHARE_MESSAGE=lib.screenshot-module.html#SHARE_MESSAGE,Variable lib.settings.SHARE_MESSAGE=lib.settings-module.html#SHARE_MESSAGE"><a title="clipcloud.SHARE_MESSAGE
+lib.dropbox.SHARE_MESSAGE
+lib.gist.SHARE_MESSAGE
+lib.main.SHARE_MESSAGE
+lib.screenshot.SHARE_MESSAGE
+lib.settings.SHARE_MESSAGE" class="py-name" href="#" onclick="return doclink('link-21', 'SHARE_MESSAGE', 'link-21');">SHARE_MESSAGE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'I just uploaded a file to ClipCloud - check it out.'</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-comment"># urls of the various services</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable clipcloud.URLS=clipcloud-module.html#URLS,Variable lib.dropbox.URLS=lib.dropbox-module.html#URLS,Variable lib.gist.URLS=lib.gist-module.html#URLS,Variable lib.main.URLS=lib.main-module.html#URLS,Variable lib.screenshot.URLS=lib.screenshot-module.html#URLS,Variable lib.settings.URLS=lib.settings-module.html#URLS"><a title="clipcloud.URLS
+lib.dropbox.URLS
+lib.gist.URLS
+lib.main.URLS
+lib.screenshot.URLS
+lib.settings.URLS" class="py-name" href="#" onclick="return doclink('link-22', 'URLS', 'link-22');">URLS</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-string">'twitter'</tt><tt class="py-op">:</tt> <tt class="py-string">"https://twitter.com/intent/tweet?text=%s&amp;url=%s"</tt><tt class="py-op">,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt class="py-string">'facebook'</tt><tt class="py-op">:</tt> <tt class="py-string">"http://www.facebook.com/sharer.php?u=%s&amp;t=%s"</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-string">'email'</tt><tt class="py-op">:</tt> <tt class="py-string">"mailto:?subject=%s&amp;body=%s"</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line"><tt class="py-op">}</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt id="link-23" class="py-name" targets="Variable clipcloud.HELP_MESSAGE=clipcloud-module.html#HELP_MESSAGE,Variable lib.dropbox.HELP_MESSAGE=lib.dropbox-module.html#HELP_MESSAGE,Variable lib.gist.HELP_MESSAGE=lib.gist-module.html#HELP_MESSAGE,Variable lib.main.HELP_MESSAGE=lib.main-module.html#HELP_MESSAGE,Variable lib.screenshot.HELP_MESSAGE=lib.screenshot-module.html#HELP_MESSAGE,Variable lib.settings.HELP_MESSAGE=lib.settings-module.html#HELP_MESSAGE"><a title="clipcloud.HELP_MESSAGE
+lib.dropbox.HELP_MESSAGE
+lib.gist.HELP_MESSAGE
+lib.main.HELP_MESSAGE
+lib.screenshot.HELP_MESSAGE
+lib.settings.HELP_MESSAGE" class="py-name" href="#" onclick="return doclink('link-23', 'HELP_MESSAGE', 'link-23');">HELP_MESSAGE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-string">ClipCloud is a program for easily sharing all kinds of stuff</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-string">You can send files and folders, or take a screenshot and send that.</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-string">You can also send the contents of your clipboard as a text snippet.</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-string">When you upload a file, a link to it will be placed in your clipboard,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt class="py-string">or you can share it to a social network or send it by email.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable clipcloud.DEBUG=clipcloud-module.html#DEBUG,Variable lib.dropbox.DEBUG=lib.dropbox-module.html#DEBUG,Variable lib.gist.DEBUG=lib.gist-module.html#DEBUG,Variable lib.main.DEBUG=lib.main-module.html#DEBUG,Variable lib.screenshot.DEBUG=lib.screenshot-module.html#DEBUG,Variable lib.settings.DEBUG=lib.settings-module.html#DEBUG"><a title="clipcloud.DEBUG
+lib.dropbox.DEBUG
+lib.gist.DEBUG
+lib.main.DEBUG
+lib.screenshot.DEBUG
+lib.settings.DEBUG" class="py-name" href="#" onclick="return doclink('link-24', 'DEBUG', 'link-24');">DEBUG</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt id="link-25" class="py-name" targets="Variable clipcloud.TIMER_ACTIVATED=clipcloud-module.html#TIMER_ACTIVATED,Variable lib.dropbox.TIMER_ACTIVATED=lib.dropbox-module.html#TIMER_ACTIVATED,Variable lib.gist.TIMER_ACTIVATED=lib.gist-module.html#TIMER_ACTIVATED,Variable lib.main.TIMER_ACTIVATED=lib.main-module.html#TIMER_ACTIVATED,Variable lib.screenshot.TIMER_ACTIVATED=lib.screenshot-module.html#TIMER_ACTIVATED,Variable lib.settings.TIMER_ACTIVATED=lib.settings-module.html#TIMER_ACTIVATED"><a title="clipcloud.TIMER_ACTIVATED
+lib.dropbox.TIMER_ACTIVATED
+lib.gist.TIMER_ACTIVATED
+lib.main.TIMER_ACTIVATED
+lib.screenshot.TIMER_ACTIVATED
+lib.settings.TIMER_ACTIVATED" class="py-name" href="#" onclick="return doclink('link-25', 'TIMER_ACTIVATED', 'link-25');">TIMER_ACTIVATED</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Apr 25 13:37:34 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

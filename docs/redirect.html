@@ -1,0 +1,38 @@
+<html><head><title>Epydoc Redirect Page</title>
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="pragma" content="no-cache" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+<!--
+var pages = ["lib.oauth.OAuthSignatureMethod_HMAC_SHA1-c", "lib.oauth.OAuthSignatureMethod_PLAINTEXT-c", "lib.dropbox.ProperHTTPSConnection-c", "lib.oauth.OAuthSignatureMethod-c", "lib.screenshot.ScreenshotArea-c", "lib.dropbox.CertificateError-c", "lib.dropbox.RESTSocketError-c", "lib.dropbox.DropboxSession-c", "lib.dropbox.DropboxClient-c", "lib.dropbox.ErrorResponse-c", "lib.screenshot.Screenshot-c", "lib.oauth.OAuthDataStore-c", "lib.clipboard.Clipboard-c", "lib.oauth.OAuthConsumer-c", "lib.dropbox.RESTClient-c", "lib.oauth.OAuthRequest-c", "lib.oauth.OAuthClient-c", "lib.oauth.OAuthServer-c", "httplib.HTTPResponse-c", "lib.oauth.OAuthError-c", "lib.oauth.OAuthToken-c", "lib.tray.SysTrayIcon-c", "lib.dropbox.Dropbox-c", "lib.history.History-c", "lib.message.Message-c", "lib.pyjson.PyJson-c", "lib.gridformat-m", "lib.screenshot-m", "lib.clipboard-m", "lib.gist.Gist-c", "lib.settings-m", "lib.dropbox-m", "lib.history-m", "lib.message-m", "lib.pyjson-m", "clipcloud-m", "lib.oauth-m", "lib.gist-m", "lib.main-m", "lib.tray-m", "lib-m"];
+var dottedName = get_anchor();
+if (dottedName) {
+    var target = redirect_url(dottedName);
+    if (target) window.location.replace(target);
+}
+// -->
+</script>
+
+<h3>Epydoc Auto-redirect page</h3>
+
+<p>When javascript is enabled, this page will redirect URLs of
+the form <tt>redirect.html#<i>dotted.name</i></tt> to the
+documentation for the object with the given fully-qualified
+dotted name.</p>
+<p><a id="message"> &nbsp; </a></p>
+
+<script type="text/javascript">
+<!--
+if (dottedName) {
+    var msg = document.getElementById("message");
+    msg.innerHTML = "No documentation found for <tt>"+
+                    dottedName+"</tt>";
+}
+// -->
+</script>
+
+</body>
+</html>
