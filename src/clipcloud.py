@@ -82,7 +82,7 @@ def clipcloud():
     history_parser = subparsers.add_parser('history')
     history_parser.add_argument('-l', '--limit', dest='limit', type=int,
         help="The number of records in the history database to show",
-        default=10, nargs=1)
+        default=10)
     history_parser.add_argument('-d', '--direction', dest='direction',
         help="The direction to sort the results by - ascending or descending",
         default='a', choices=['a', 'd'])

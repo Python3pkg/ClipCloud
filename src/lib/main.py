@@ -9,7 +9,7 @@ from history import History
 from settings import *
 from pyjson import PyJson
 from clipboard import Clipboard
-from dropbox import Dropbox
+from dropboxwrap import Dropbox
 
 
 def save_link(link, paths, share_to):
