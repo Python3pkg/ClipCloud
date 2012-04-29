@@ -13,7 +13,7 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
     """
 
     # find the longest cell in each column so the minimum width is known
-    widths = [max([len(cell) for cell in row]) for row in [x for x in zip(*grid)]]
+    widths = [max([len(cell) for cell in row]) for row in zip(*grid)]
     total = sum(widths)
 
     # try to determine the width of the user's terminal window in characters

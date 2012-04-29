@@ -76,10 +76,10 @@ def handle_files(paths, filenames, share_to):
     # There's a special case if there's one file and no folders,
     # It can be uploaded on its own.
     if num_files == 1 and num_folders == 0:
-        _file = files[0]
-        d.upload(_file, filepath=filenames[0])
+        file_ = files[0]
+        d.upload(file_, filepath=filenames[0])
         link = d.get_link('/' + filenames[0])
-        local_paths = [os.path.abspath(_file)]
+        local_paths = [os.path.abspath(file_)]
 
     # Otherwise it's more complicated.
     # We could have multiple files, one folder, multiple folders, or a mix of files and folders
@@ -100,9 +100,9 @@ def handle_files(paths, filenames, share_to):
 
         # Upload all the files to the root folder
         i = 0
-        for _file in files:
+        for file_ in files:
             filename = folder_name + '/' + filenames[i]
-            d.upload(_file, filepath=filename)
+            d.upload(file_, filepath=filename)
             i += 1
 
         # Then recursively upload all the folders and their contents to the root folder
@@ -110,7 +110,7 @@ def handle_files(paths, filenames, share_to):
             d.upload_folder(folder_name)
 
         link = d.get_link('/' + d.final_folder_name)
-        local_paths = [os.path.abspath(_file) for _file in files]
+        local_paths = [os.path.abspath(file_) for file_ in files]
 
     save_link(link, local_paths, share_to)
 

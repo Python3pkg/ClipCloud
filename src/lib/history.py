@@ -33,12 +33,12 @@ class History:
             if limit == 0:
                 break
 
-            _id = str(record['id'])
+            id_ = str(record['id'])
             url = record['url']
             path = record['path']
-            _date = date.fromtimestamp(record['timestamp']).strftime('%d/%m/%Y')
+            date_ = date.fromtimestamp(record['timestamp']).strftime('%d/%m/%Y')
 
-            row = [_id, url, path, _date]
+            row = [id_, url, path, date_]
 
             grid.append(row)
 
@@ -57,10 +57,10 @@ class History:
 
         history = self.history.doc['history']
 
-        id = 1 if len(history) == 0 else history[-1]['id'] + 1
+        id_ = 1 if len(history) == 0 else history[-1]['id'] + 1
 
         history.append({
-            'id': id,
+            'id': id_,
             'path': path,
             'url': url,
             'timestamp': time()

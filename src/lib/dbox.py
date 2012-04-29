@@ -62,7 +62,6 @@ class Dropbox:
 
         # create a client from the finished session
         client = DropboxClient(session)
-        #print client.account_info()
 
         self.client = client
 
