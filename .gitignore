@@ -1,11 +1,8 @@
-lib/api.json
+*/api.json
 *.sublime-project
 *.sublime-workspace
-test
 test.txt
 test.png
 *.pyc
 clipcloud/*
-*.psd
-requests/*
 *.DS_Store
