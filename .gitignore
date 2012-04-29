@@ -1,8 +1,11 @@
-*/api.json
 *.sublime-project
 *.sublime-workspace
-test.txt
-test.png
+
 *.pyc
+
+!src/lib/apikeys.pyc
+src/lib/apikeys.py
+
 clipcloud/*
+
 *.DS_Store

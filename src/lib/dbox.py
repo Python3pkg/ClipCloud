@@ -1,8 +1,11 @@
 import webbrowser
 import json
+
 from dropbox.session import DropboxSession
 from dropbox.client import DropboxClient
+
 from lib.settings import *
+from lib.apikeys import *
 from lib.message import Message
 
 
@@ -17,8 +20,7 @@ class Dropbox:
 
         self.m = Message(in_user_mode=in_user_mode)
 
-        api_details = json.load(open('lib/dropbox/api.json'))['dropbox']
-        session = DropboxSession(api_details['key'], api_details['secret'], self.ACCESS_TYPE)
+        session = DropboxSession(API_KEY, API_SECRET, self.ACCESS_TYPE)
 
         # if there is a token saved, that can be used to connect with dropbox
         if os.path.exists(TOKEN_PATH):
