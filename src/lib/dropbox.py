@@ -180,11 +180,11 @@ class Dropbox:
 
             self.final_folder_name = new_folder_name
 
-        # If it fails because a folder with that name already exists
-        # then increment a number, append it to the folder name
-        # and call the function recursively until it works
         except ErrorResponse as e:
             if e.status == 403:
+                # It failed because a folder with that name already exists
+                # Increment a number and append it to the folder name
+                # then call the function recursively until it works
                 self.create_folder(folder_name, num=num + 1)
 
 """

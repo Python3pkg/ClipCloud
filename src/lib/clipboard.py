@@ -19,6 +19,7 @@ class Clipboard:
         Arguments:
         - link: the url of the uploaded file to set the clipboard to
         """
+
         r = Tk()
         r.withdraw()
         r.clipboard_clear()

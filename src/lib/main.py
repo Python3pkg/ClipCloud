@@ -160,7 +160,6 @@ def history(args):
     History().display(args.limit, args.sort_by, args.direction, args.start)
 
 
-# Do something with a previous file
 def revisit(args):
     """Perform operations on previously uploaded files such as reuploading or viewing"""
 

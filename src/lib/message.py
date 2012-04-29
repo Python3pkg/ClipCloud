@@ -13,5 +13,6 @@ class Message:
         If not, then the program is being used as part of a script or the output is being piped
         to another program, so user messages should not be shown.
         """
+
         if self.in_user_mode:
             print text

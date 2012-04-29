@@ -24,6 +24,7 @@ class PyJson:
         - path: The path to the file to store the JSON in
         - base: The root structure of the JSON document
         """
+
         self.path = path
 
         if not os.path.exists(path):
@@ -33,21 +34,24 @@ class PyJson:
 
         f = open(path, 'r')
 
-        # parse the json file in to a native Python dictionary object
+        # parse the JSON file to a native Python dictionary object
         self.doc = json.load(f)
 
         f.close()
 
     def add(self, key, value):
         """Add a record to the Python dictionary"""
+
         self.doc[key] = value
 
     def remove(self, key):
         """Remove a record from the Python dictionary"""
+
         self.doc[key] = None
 
     def save(self):
         """Save a json representation of the Python dictionary to the file"""
+
         f = open(self.path, 'w')
         f.write(json.dumps(self.doc, sort_keys=True, indent=4))
         f.close()

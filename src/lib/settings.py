@@ -9,9 +9,9 @@ APP_NAME = "ClipCloud"
 # root folder in AppData for storing data
 if PLATFORM == 'Darwin':
     APP_PATH = os.path.join(os.path.expanduser('~'), 'Library/Application Support/' + APP_NAME)
+elif PLATFORM == 'Windows':
+    APP_PATH = os.path.join(os.environ['APPDATA'], APP_NAME)
 elif PLATFORM == 'Linux':
-    APP_PATH = os.path.join(os.path.expanduser('~'), 'Library/Application Support/' + APP_NAME)
-else:
     APP_PATH = os.path.expanduser(os.path.join("~", "." + APP_NAME))
 
 # folder for storing screenshots
@@ -40,13 +40,10 @@ URLS = {
     'email': "mailto:?subject=%s&body=%s"
 }
 
-HELP_MESSAGE = """
-ClipCloud is a program for easily sharing all kinds of stuff
+HELP_MESSAGE = '''ClipCloud is a program for easily sharing all kinds of stuff.
 You can send files and folders, or take a screenshot and send that.
 You can also send the contents of your clipboard as a text snippet.
-When you upload a file, a link to it will be placed in your clipboard,
-or you can share it to a social network or send it by email.
-"""
+When you upload a file, a link to it will be placed in your clipboard, or you can share it to a social network or send it by email.'''
 
 DEBUG = True
 TIMER_ACTIVATED = True

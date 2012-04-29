@@ -11,6 +11,7 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
     Returns: The grid as a nicely formatted string, with padding, dividers and
     truncation if it is wider than the terminal window
     """
+
     # find the longest cell in each column so the minimum width is known
     widths = [max([len(cell) for cell in row]) for row in [x for x in zip(*grid)]]
     total = sum(widths)
