@@ -19,10 +19,10 @@ class History:
         Load the history and print out a number of records to the screen.
 
         Arguments:
-        - limit: the number of items to show
-        - direction: the order to sort the files in to, (ascending or descending)
-        - sort_by: the value to sort by (id, path, url or date)
-        - start: the record number to start at
+        - limit: The number of items to show
+        - direction: The order to sort the files in to, (ascending or descending)
+        - sort_by: The value to sort by (id, path, url or date)
+        - start: The record number to start at
         """
 
         history = sorted(self.history.doc['history'], key=lambda k: k[sort_by], reverse=direction == 'd')
@@ -46,24 +46,27 @@ class History:
 
         print format_grid(grid, divider_positions=[1], truncatable_column=2)
 
-    def add(self, path, url):
+    def add(self, path, url, filename=None):
         """
         Write a new record to the history
 
         Arguments:
-        - path: the path to the local copy of the file that was uploaded
-        - url: the shortened URl that points to the copy of the file hosted on the users dropbox acount
+        - path: The path to the local copy of the file that was uploaded
+        - url: The shortened URL that points to the copy of the file hosted on the user's Dropbox account
         """
 
         history = self.history.doc['history']
 
+        if filename is None:
+            filename = path
         id_ = 1 if len(history) == 0 else history[-1]['id'] + 1
-
-        history.append({
+        record = {
             'id': id_,
             'path': path,
+            'filename': filename,
             'url': url,
             'timestamp': time()
-        })
+        }
 
+        history.append(record)
         self.history.save()

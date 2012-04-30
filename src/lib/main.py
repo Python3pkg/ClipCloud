@@ -173,14 +173,16 @@ def revisit(args):
         print 'Type clipcloud history to see what files you have saved'
         return
 
+    path = record['path']
+
     if args.operation == 'reupload':
-        handle_file([record['path']], [record['path']], 'clipboard')
+        handle_files([path], [record['filename']], 'clipboard')
 
     elif args.operation == 'open_local':
         if PLATFORM == 'Windows':
-            Popen(r'explorer /select,"%s"' % record['path'])
+            Popen(r'explorer /select,"%s"' % path)
         elif PLATFORM == 'Darwin':
-            call(['open', '-R', record['path']])
+            call(['open', '-R', path])
 
     elif args.operation == 'open_remote':
         webbrowser.open(record['url'], new=2)
