@@ -29,7 +29,7 @@ class PyJson:
 
         if not os.path.exists(path):
             f = open(path, 'w')
-            f.write(json.dumps(base, sort_keys=True, indent=4))
+            f.write(json.dumps(base, indent=4))
             f.close()
 
         f = open(path, 'r')
@@ -53,5 +53,5 @@ class PyJson:
         """Save a json representation of the Python dictionary to the file"""
 
         f = open(self.path, 'w')
-        f.write(json.dumps(self.doc, sort_keys=True, indent=4))
+        f.write(json.dumps(self.doc, indent=4))
         f.close()

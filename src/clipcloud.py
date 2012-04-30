@@ -56,7 +56,7 @@ def clipcloud():
     # Create the parser for options that only apply to revisiting old uploads
     revisit_parser = subparsers.add_parser('revisit')
     revisit_parser.add_argument('operation',
-        choices=['open_local', 'open_remote', 'reupload'])
+        choices=['local', 'remote', 'upload'])
     revisit_parser.add_argument('id', type=int)
     revisit_parser.set_defaults(func=revisit)
 

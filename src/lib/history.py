@@ -25,7 +25,12 @@ class History:
         - start: the record number to start at
         """
 
-        history = sorted(self.history.doc['history'], key=lambda k: k[sort_by], reverse=direction == 'd')
+        history = self.history.doc['history']
+        if len(history) < 1:
+            print 'No records to display'
+            return
+
+        history = sorted(history, key=lambda k: k[sort_by], reverse=direction == 'd')
         grid = [['Id', 'URL', 'Local File', 'Date Created']]
 
         # iterate through the array of records, parse them and create a new 2d array of the formatted values
@@ -46,7 +51,7 @@ class History:
 
         print format_grid(grid, divider_positions=[1], truncatable_column=2)
 
-    def add(self, path, url):
+    def add(self, path, filename, url):
         """
         Write a new record to the history
 
@@ -58,12 +63,13 @@ class History:
         history = self.history.doc['history']
 
         id_ = 1 if len(history) == 0 else history[-1]['id'] + 1
-
-        history.append({
+        record = {
             'id': id_,
             'path': path,
+            'filename': filename,
             'url': url,
             'timestamp': time()
-        })
+        }
 
+        history.append(record)
         self.history.save()

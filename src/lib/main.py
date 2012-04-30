@@ -12,7 +12,7 @@ from clipboard import Clipboard
 from dbox import Dropbox
 
 
-def save_link(link, paths, share_to):
+def save_link(link, paths, filenames, share_to):
     """
     Save the details of an uploaded file to the history file and send the link to its destination
 
@@ -25,8 +25,8 @@ def save_link(link, paths, share_to):
         return
 
     # save a record of it to the history,
-    for path in paths:
-        History().add(path, link)
+    for path, filename in zip(paths, filenames):
+        History().add(path, filename, link)
 
     # and then send the link to its destination, be that clipboard or social network.
     if share_to == 'clipboard':
@@ -112,7 +112,7 @@ def handle_files(paths, filenames, share_to):
         link = d.get_link('/' + d.final_folder_name)
         local_paths = [os.path.abspath(file_) for file_ in files]
 
-    save_link(link, local_paths, share_to)
+    save_link(link, local_paths, filenames, share_to)
 
 
 def screenshot(args):
@@ -133,6 +133,9 @@ def upload(args):
 def snippet(args):
     """Upload the contents of the user's clipboard as a text file"""
 
+    # gist functionality on hold - dropbox works fine for now
+    # from gist import Gist
+
     clipboard = Clipboard().get()
     if clipboard is None:
         return
@@ -146,6 +149,9 @@ def snippet(args):
         f.close()
 
         handle_files([path], [filename], args.share)
+
+    #elif args.text == 'gist':
+    #    Gist().upload(filename, clipboard)
 
 
 def history(args):
@@ -167,14 +173,16 @@ def revisit(args):
         print 'Type clipcloud history to see what files you have saved'
         return
 
-    if args.operation == 'reupload':
-        handle_file([record['path']], [record['path']], 'clipboard')
+    path = record['path']
 
-    elif args.operation == 'open_local':
+    if args.operation == 'upload':
+        handle_files([path], [record['filename']], 'clipboard')
+
+    elif args.operation == 'local':
         if PLATFORM == 'Windows':
-            Popen(r'explorer /select,"%s"' % record['path'])
+            Popen(r'explorer /select,"%s"' % path)
         elif PLATFORM == 'Darwin':
-            call(['open', '-R', record['path']])
+            call(['open', '-R', path])
 
-    elif args.operation == 'open_remote':
+    elif args.operation == 'remote':
         webbrowser.open(record['url'], new=2)

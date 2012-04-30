@@ -10,7 +10,7 @@ It has only been primarily tested on Windows but most functionality also works o
 - `up </path/to/file/or/folder> [second file, third file...]`: Upload the specified files and folders.
 - `snap [-m mode]`: Take a screenshot and upload it. Mode can be `draw` or `screen`. Defaults to `screen`.
 - `history [-l number_of_records] [-t sort_by] [-b start] [-d direction]`: Show a history of the files you've uploaded previously. Defaults to the last 10 records.
-- `revisit <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `reupload`, `open_remote` or `open_local`.
+- `revisit <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `upload`, `remote` or `local`.
 - `text [-e extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
 
 ##Options:
