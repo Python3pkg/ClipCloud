@@ -85,7 +85,7 @@ class Dropbox:
 
         try:
             self.m.message('Uploading...')
-            # Open the file located at path and upload it to the dropbox servers
+            # Open the file located at path and upload it to the Dropbox servers
             response = self.client.put_file(filepath, open(path, 'rb'))
             self.m.message('Upload finished')
         except Exception as error:
@@ -142,11 +142,10 @@ class Dropbox:
 
         new_folder_name = folder_name
 
+        if num > 1:
+            new_folder_name += '_(%s)' % num
         # Try to create a folder with the given name
         try:
-            if num > 1:
-                new_folder_name += '_(' + str(num) + ')'
-
             self.client.file_create_folder('/' + new_folder_name)
 
             if num > 1:
@@ -157,6 +156,7 @@ class Dropbox:
         except ErrorResponse as e:
             if e.status == 403:
                 # It failed because a folder with that name already exists
-                # Increment a number and append it to the folder name
+                # Increment a number to be appended to the folder name
                 # then call the function recursively until it works
-                self.create_folder(folder_name, num=num + 1)
+                num += 1
+                self.create_folder(folder_name, num=num)

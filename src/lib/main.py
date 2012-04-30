@@ -133,9 +133,6 @@ def upload(args):
 def snippet(args):
     """Upload the contents of the user's clipboard as a text file"""
 
-    # gist functionality on hold - dropbox works fine for now
-    # from gist import Gist
-
     clipboard = Clipboard().get()
     if clipboard is None:
         return
@@ -149,9 +146,6 @@ def snippet(args):
         f.close()
 
         handle_files([path], [filename], args.share)
-
-    #elif args.text == 'gist':
-    #    Gist().upload(filename, clipboard)
 
 
 def history(args):
