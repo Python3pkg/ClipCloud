@@ -54,14 +54,16 @@ class ClipCloud:
         - filenames: An array of filenames without the full path to them, that corresponds to the files in paths
         - share_to: The service to send the link to the uploaded files to
         """
+
         in_user_mode = share_to != 'stdout'
         d = Dropbox(in_user_mode=in_user_mode)
 
-        # Start by sorting the paths into two separate arrays for files and folders
         files = []
         folders = []
         non_existent = []
 
+        # Start by sorting the paths into two separate arrays for files and folders
+        # and filter out any that don't exist
         for path in paths:
             if os.path.exists(path):
                 if os.path.isdir(path):
@@ -71,16 +73,24 @@ class ClipCloud:
             else:
                 non_existent.append(path)
 
+        # If any of the paths don't point to existing files then tell the user
+        # There could still be other files that do exist so keep going after this
         if len(non_existent) > 0:
             print "Some files or folders you tried to upload don't exist"
             print "They are: %s" % ', '.join(non_existent)
-            return
 
         num_files = len(files)
         num_folders = len(folders)
 
-        # There's a special case if there's one file and no folders,
-        # It can be uploaded on its own.
+        # Even though argparse handles missing arguments, if none of the files existed
+        # There would be nothing to upload
+        if num_files == 0 and num_folders == 0:
+            print 'No valid files or folders specified'
+            return
+
+        # After this point there is definitely something to upload
+
+        # There's a special case if there's one file and no folders: it can be uploaded on its own
         if num_files == 1 and num_folders == 0:
             file_ = files[0]
             d.upload(file_, filepath=filenames[0])
@@ -88,16 +98,16 @@ class ClipCloud:
             local_paths = [os.path.abspath(file_)]
 
         # Otherwise it's more complicated.
-        # We could have multiple files, one folder, multiple folders, or a mix of files and folders
+        # There could be multiple files, one folder, multiple folders, or a mix of files and folders
 
-        # If there's one folder only, we can upload it using its current name
+        # There's only one folder; it can be uploaded using its current name
         elif num_folders == 1 and num_files == 0:
             folder = folders[0]
             d.upload_folder(folder)
             link = d.get_link('/' + folder)
             local_paths = [os.path.abspath(folder)]
 
-        # If we've got to here, we have multiple files and folders
+        # There are multiple files and folders
         else:
             # create a root folder with a unique name to hold everything we upload
             code = str(int(time()))
