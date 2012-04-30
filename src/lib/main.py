@@ -1,4 +1,10 @@
-""""""
+"""
+The core functionality of the program.
+Contains the functions for managing each major task the program can perform
+such as uploading files and taking screenshots
+
+The actual code to perform these actions is in separate modules, this once just ties them together
+"""
 
 import os
 from subprocess import Popen, call
@@ -127,7 +133,9 @@ def screenshot(args):
 
     from screenshot import Screenshot
 
+    # Import the screenshot module and take a screenshot with the mode the user specified
     path, filename = Screenshot().capture(args.mode)
+    # Upload the screenshot
     c.handle_files([path], [filename], args.share)
 
 
@@ -140,23 +148,28 @@ def upload(args):
 def snippet(args):
     """Upload the contents of the user's clipboard as a text file"""
 
+    # Get the contents of the clipboard
     clipboard = Clipboard().get()
     if clipboard is None:
         return
 
-    filename = 'text_snippet_%d.%s' % (time(), args.extension)
-    path = os.path.join(TMP_PATH, filename)
-
     if args.text == 'dropbox':
+        # Create a unique name for the text file the snippet will be stored in
+        # With the extension specified by the user
+        filename = 'text_snippet_%d.%s' % (time(), args.extension)
+        path = os.path.join(TMP_PATH, filename)
+
+        # Save it
         f = open(path, 'w')
         f.write(clipboard)
         f.close()
 
+        # Upload it
         c.handle_files([path], [filename], args.share)
 
 
 def history(args):
-    """Display the history of previously uploaded file"""
+    """Display the history of previously uploaded files and folders in a table"""
 
     History().display(args.limit, args.sort_by, args.direction, args.start)
 
@@ -164,8 +177,10 @@ def history(args):
 def revisit(args):
     """Perform operations on previously uploaded files such as reuploading or viewing"""
 
+    # Load the history
     history = PyJson(HISTORY_PATH).doc['history']
 
+    # Ensure that the record that user specified exists
     if args.id <= len(history):
         record = history[args.id - 1]
     else:
@@ -174,16 +189,20 @@ def revisit(args):
         print 'Type clipcloud history to see what files you have saved'
         return
 
+    # Get the path to the local copy of the file that the user requested
     path = record['path']
 
     if args.operation == 'upload':
+        # Re-upload the file
         c.handle_files([path], [record['filename']], 'clipboard')
 
     elif args.operation == 'local':
+        # Open the folder containing the local copy of the file in the system's file manager
         if PLATFORM == 'Windows':
             Popen(r'explorer /select,"%s"' % path)
         elif PLATFORM == 'Darwin':
             call(['open', '-R', path])
 
     elif args.operation == 'remote':
+        # Open the hosted copy of the file in the user's default web browser as a new tab
         webbrowser.open(record['url'], new=2)
