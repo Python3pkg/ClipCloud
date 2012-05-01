@@ -4,7 +4,7 @@ ClipCloud is a program for quickly sharing files. Currently it consists of a com
 
 A GUI is planned, as well as the ability to upload elsewhere, such as a personal server via SSH.
 
-It has only been primarily tested on Windows but most functionality also works on OS X. Dropbox and OAuth are bundled with it, but you'll need to install `simplejson` separately and also `wxPython` if you want to take screenshots.
+It has only been primarily tested on Windows but most functionality also works on OS X and Linux. The Dropbox API is bundled with it, but you'll need to install its dependencies, `OAuth` `simplejson` separately and also `wxPython` if you want to take screenshots.
 
 ##Arguments:
 - `up </path/to/file/or/folder> [second file, third file...]`: Upload the specified files and folders.

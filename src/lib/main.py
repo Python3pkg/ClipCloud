@@ -28,6 +28,7 @@ class ClipCloud:
         - paths: An array of paths to all the files and folders that were uploaded
         - share_to: A string representing the destination of the link - clipboard, social network or stdout
         """
+
         if not self.link:
             return
 

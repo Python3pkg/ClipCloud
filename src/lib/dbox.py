@@ -71,8 +71,8 @@ class Dropbox:
 
         Arguments:
         - path: The path to the local copy of the file to be uploaded
-        - filename: The path, including the filename given to the remote copy of the file
-            once it is uploaded to Dropbox. If omitted it defaults to being the same as path
+        - filepath: The path, including the filename given to the remote copy of the file
+        once it is uploaded to Dropbox. If omitted it defaults to be the same as path
         """
 
         if self.client is None:
