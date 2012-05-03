@@ -13,7 +13,6 @@ from time import time
 
 from history import History
 from settings import *
-from pyjson import PyJson
 from clipboard import Clipboard
 from dbox import Dropbox
 
