@@ -189,7 +189,7 @@ def revisit(args):
     """Perform operations on previously uploaded files such as reuploading or viewing"""
 
     # Load the history
-    history = PyJson(HISTORY_PATH).doc['history']
+    history = History().history
 
     # Ensure that the record that user specified exists
     if args.id <= len(history):

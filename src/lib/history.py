@@ -12,7 +12,8 @@ class History:
     """
 
     def __init__(self):
-        self.history = PyJson(HISTORY_PATH, base={'history': []})
+        self.history_file = PyJson(HISTORY_PATH, base={'history': []})
+        self.history = self.history_file.doc['history']
 
     def display(self, limit, sort_by, direction, start):
         """
@@ -25,12 +26,11 @@ class History:
         - start: the record number to start at
         """
 
-        history = self.history.doc['history']
-        if len(history) < 1:
+        if len(self.history) < 1:
             print 'No records to display'
             return
 
-        history = sorted(history, key=lambda k: k[sort_by], reverse=direction == 'd')
+        history = sorted(self.history, key=lambda k: k[sort_by], reverse=direction == 'd')
         grid = [['Id', 'URL', 'Local File', 'Date Created']]
 
         # iterate through the array of records, parse them and create a new 2d array of the formatted values
@@ -60,9 +60,7 @@ class History:
         - url: the shortened URl that points to the copy of the file hosted on the users dropbox acount
         """
 
-        history = self.history.doc['history']
-
-        id_ = 1 if len(history) == 0 else history[-1]['id'] + 1
+        id_ = 1 if len(self.history) == 0 else self.history[-1]['id'] + 1
         record = {
             'id': id_,
             'path': path,
@@ -71,5 +69,5 @@ class History:
             'timestamp': time()
         }
 
-        history.append(record)
-        self.history.save()
+        self.history.append(record)
+        self.history_file.save()
