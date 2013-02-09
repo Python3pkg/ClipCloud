@@ -9,3 +9,6 @@ src/lib/apikeys.py
 clipcloud/*
 
 *.DS_Store
+
+*.egg-info
+dist
