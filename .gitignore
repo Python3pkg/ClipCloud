@@ -12,3 +12,4 @@ clipcloud/*
 
 *.egg-info
 dist
+build

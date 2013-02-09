@@ -1,4 +1,4 @@
-from lib.settings import HISTORY_PATH
+from settings import HISTORY_PATH
 from time import time
 from datetime import date
 from pyjson import PyJson

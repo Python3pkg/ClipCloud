@@ -17,7 +17,20 @@ setup(
     install_requires=[
         'dropbox'
     ],
-    py_modules=['src/clipcloud'],
+    py_modules=[
+        'apikeys',
+        'clipcloud',
+        'clipboard',
+        'dbox',
+        'gridformat',
+        'history',
+        'main',
+        'message',
+        'pyjson',
+        'screenshot',
+        'settings',
+        'tray'
+    ],
     entry_points={
         'console_scripts': ['clipcloud=clipcloud:main']
     }

@@ -46,4 +46,3 @@ You can also send the contents of your clipboard as a text snippet.
 When you upload a file, a link to it will be placed in your clipboard, or you can share it to a social network or send it by email.'''
 
 DEBUG = True
-TIMER_ACTIVATED = False

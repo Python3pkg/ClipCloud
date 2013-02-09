@@ -21,27 +21,37 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
     try:
         import subprocess
         terminal_width = int(subprocess.check_output('stty size').split()[1])
+
     except:
         print 'The size of your terminal window could not be determined so ' \
             'the layout of the grid below may be broken due to text wrapping.'
-        terminal_width = 80  # default width for a lot of systems
+
+        # default width for a lot of systems
+        terminal_width = 80
 
     # if the grid is wider than the terminal window work out the difference between them
     # this is the amount to truncate the grid by
     terminal_diff = None
+
     if total > terminal_width:
         if truncatable_column is not None:
-            terminal_diff = terminal_width - total - 12  # 12 is the number of dividers and spaces added
-            widths[2] += terminal_diff  # reduce the width of the column by the difference
+            # 12 is the number of dividers and spaces added
+            terminal_diff = terminal_width - total - 12
+            # reduce the width of the column by the difference
+            widths[2] += terminal_diff
+
         else:
             print 'The grid is wider than your terminal but no columns can be truncated so ' \
                 'some columns may not be visible.'
 
-    a = []  # final grid array
+    # final grid array
+    a = []
+
     for row in grid:
         # truncate column 3 if the table would be wider than the terminal window
         # id, url and date don't vary much in width, only the local path is worth truncating
-        if truncatable_column is not None and terminal_diff is not None and len(row[truncatable_column]) > widths[truncatable_column]:
+        if truncatable_column is not None and terminal_diff is not None and \
+            len(row[truncatable_column]) > widths[truncatable_column]:
             row[truncatable_column] = row[truncatable_column][:terminal_diff - 3] + '...'
 
         # format the cells into a string with dividers between and add the row to the final grid
@@ -51,7 +61,9 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
 
     # add a horizontal divider only below the header
     width = len(s)
+
     for pos, i in zip(divider_positions, xrange(len(divider_positions))):
         a.insert(pos + i, '-' * width)
 
-    return '\n' + '\n'.join(a)[:-1]  # convert to the final string and trim the last line break
+    # convert to the final string and trim the last line break
+    return '\n' + '\n'.join(a)[:-1]

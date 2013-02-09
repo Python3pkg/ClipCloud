@@ -1,5 +1,5 @@
-from lib.tray import SysTrayIcon
-from lib.history import History
+from tray import SysTrayIcon
+from history import History
 
 hover_text = "ClipCloud"
 icon_filename = 'favicon.ico'

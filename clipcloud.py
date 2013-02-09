@@ -5,8 +5,8 @@
 import os
 from argparse import ArgumentParser
 
-from lib.main import *
-from lib.settings import *
+from main import *
+from settings import *
 
 
 def clipcloud():
@@ -88,15 +88,13 @@ def clipcloud():
 
 
 def main():
-    # Don't do anything if this file is being imported as a module
-    if __name__ == '__main__':
         # If program execution time is being measured, call the main function from a timer
-        if TIMER_ACTIVATED:
-            from timeit import Timer
-            t = Timer('clipcloud.clipcloud()', 'import clipcloud')
-            print t.timeit(number=1)
+        # if TIMER_ACTIVATED:
+        #     from timeit import Timer
+        #     t = Timer('clipcloud.clipcloud()', 'import clipcloud')
+        #     print t.timeit(number=1)
         # Otherwise just call it
-        else:
-            clipcloud()
-
-main()
+        # else:
+    clipcloud()
+if __name__ == '__main__':
+    main()

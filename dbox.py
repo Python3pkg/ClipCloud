@@ -4,9 +4,9 @@ import json
 from dropbox.session import DropboxSession
 from dropbox.client import DropboxClient
 
-from lib.settings import *
-from lib.apikeys import *
-from lib.message import Message
+from settings import *
+from apikeys import *
+from message import Message
 
 
 class Dropbox:
