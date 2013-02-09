@@ -1,15 +1,5 @@
-*.sublime-project
-*.sublime-workspace
-
-*.pyc
-
-!src/lib/apikeys.pyc
-src/lib/apikeys.py
-
-clipcloud/*
-
+*.sublime-*
 *.DS_Store
-
 *.egg-info
 dist
 build
