@@ -1,20 +1,8 @@
 #!/usr/bin/env python
 #
-# ######################################################################
-#
-#  CCC  L     III  PPP    CCC  L      OO   U  U  DDD            #       
-# C     L      I   P  P  C     L     O  O  U  U  D  D     ##   ###  #   
-# C     L      I   PPP   C     L     O  O  U  U  D  D    #### #######   
-#  CCC  LLLL  III  P      CCC  LLLL   OO    UU   DDD    ############### 
-#
-# ######################################################################
-# (c) 2011-2012 Giles Lavelle GPLv3
-#
+# (c) 2011-2013 Giles Lavelle GPLv3
 
-# for interacting with the file system
 import os
-
-# for parsing command-line arguments and options
 from argparse import ArgumentParser
 
 from lib.main import *
