@@ -9,18 +9,18 @@ from main import *
 from settings import *
 
 
-def clipcloud():
+def main():
     """
     Wrapper around the rest of the program's functionality.
     Receives the command line parameters and passes them on to be processed.
     Also does some other stuff that needs to be done every time the program runs.
     """
 
-    # Create the folder for storing screenshots if it doesnt exist.
+    # Create the folder for storing screenshots if it doesn't exist
     if not os.path.exists(SCREENSHOT_PATH):
         os.makedirs(SCREENSHOT_PATH)
 
-    # Create the folder for storing temporary files if it doesnt exist.
+    # Create the folder for storing temporary files if it doesn't exist
     if not os.path.exists(TMP_PATH):
         os.makedirs(TMP_PATH)
 
@@ -82,20 +82,10 @@ def clipcloud():
         default=1)
     history_parser.set_defaults(func=history)
 
-    # finally parse all arguments run the relevant function
+    # Finally parse all the arguments
     args = parser.parse_args()
+    # Run the relevant function
     args.func(args)
-
-
-def main():
-        # If program execution time is being measured, call the main function from a timer
-        # if TIMER_ACTIVATED:
-        #     from timeit import Timer
-        #     t = Timer('clipcloud.clipcloud()', 'import clipcloud')
-        #     print t.timeit(number=1)
-        # Otherwise just call it
-        # else:
-    clipcloud()
 
 if __name__ == '__main__':
     main()

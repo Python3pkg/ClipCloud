@@ -3,10 +3,10 @@ from platform import system
 
 PLATFORM = system()
 
-# name of the app.
+# Name of the app
 APP_NAME = "ClipCloud"
 
-# root folder in AppData for storing data
+# Root directory for storing application data
 if PLATFORM == 'Darwin':
     APP_PATH = os.path.join(os.path.expanduser('~'), 'Library/Application Support/' + APP_NAME)
 elif PLATFORM == 'Windows':
@@ -14,26 +14,26 @@ elif PLATFORM == 'Windows':
 elif PLATFORM == 'Linux':
     APP_PATH = os.path.expanduser(os.path.join("~", "." + APP_NAME))
 
-# folder for storing screenshots
+# Directory for storing screenshots
 SCREENSHOT_PATH = os.path.join(APP_PATH, 'img')
 
-# folder for temporary files
+# Directory for storing temporary files
 TMP_PATH = os.path.join(APP_PATH, 'tmp')
 
-# file to store history in
+# File to write history data to
 HISTORY_PATH = os.path.join(APP_PATH, 'history.json')
 
-# path to file in which the Oauth access token for connecting to dropbox is stored
+# Path to file in which the OAuth access token for connecting to Dropbox is stored
 TOKEN_PATH = os.path.join(APP_PATH, 'token.json')
 GITHUB_TOKEN_PATH = os.path.join(APP_PATH, 'github_token.json')
 
-# services to send the link to the hosted file to
+# Services to send the link to the hosted file to
 SHARING_SERVICES = 'clipboard facebook twitter email stdout'.split(' ')
 
-# default message when shared to a social network
+# Default message when shared to a social network
 SHARE_MESSAGE = 'I just uploaded a file to ClipCloud - check it out.'
 
-# urls of the various services
+# URLs of the various sharing services
 URLS = {
     'twitter': "https://twitter.com/intent/tweet?text=%s&url=%s",
     'facebook': "http://www.facebook.com/sharer.php?u=%s&t=%s",
