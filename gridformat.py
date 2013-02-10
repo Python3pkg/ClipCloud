@@ -1,3 +1,6 @@
+from settings import DEBUG
+
+
 def format_grid(grid, divider_positions=[], truncatable_column=None):
     """
     Create a string that displays a 2D array of values in a formatted and aligned table
@@ -21,19 +24,20 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
     separator_width = 3
     # Total number of characters used by all column separators in one row of the grid
     separators_width = num_columns * separator_width
+    # Default width for a lot of systems
+    terminal_width = 80
 
     # Try to determine the width of the user's terminal window in characters
     # so the rows can be truncated if they are too long
     try:
         import subprocess
-        terminal_width = int(subprocess.check_output('stty size').split()[1])
+        terminal_width = int(subprocess.check_output(['stty', 'size']).split()[1])
 
-    except:
+    except Exception as error:
+        if DEBUG:
+            print error
         print 'The size of your terminal window could not be determined so ' \
             'the layout of the grid below may be broken due to text wrapping.'
-
-        # Default width for a lot of systems
-        terminal_width = 80
 
     # If the grid is wider than the terminal window work out the difference between them -
     # this is the number of characters by which the table should be truncated
