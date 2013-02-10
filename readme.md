@@ -33,6 +33,10 @@ cd ClipCloud
 
 ## Changelog
 
+### 0.2.1
+- Improved grid formatter
+- Improved formatting of code and comments
+
 ### 0.2
 - Fixed screenshot feature
 

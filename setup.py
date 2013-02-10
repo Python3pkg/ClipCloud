@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='ClipCloud',
-    version='0.2',
+    version='0.2.1',
     url='https://github.com/lavelle/ClipCloud',
 
     author='Giles Lavelle',
