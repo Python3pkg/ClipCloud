@@ -20,9 +20,8 @@ class PyJson:
         """
         Create the file if it does not exist and add an empty JSON object to it
 
-        Arguments:
-        - path: The path to the file to store the JSON in
-        - base: The root structure of the JSON document
+        path - The path to the file to store the JSON in
+        base - The root structure of the JSON document
         """
 
         self.path = path
@@ -50,7 +49,7 @@ class PyJson:
         self.doc[key] = None
 
     def save(self):
-        """Save a json representation of the Python dictionary to the file"""
+        """Save a JSON representation of the Python dictionary to the file"""
 
         f = open(self.path, 'w')
         f.write(json.dumps(self.doc, indent=4))

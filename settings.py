@@ -27,6 +27,9 @@ HISTORY_PATH = os.path.join(APP_PATH, 'history.json')
 TOKEN_PATH = os.path.join(APP_PATH, 'token.json')
 GITHUB_TOKEN_PATH = os.path.join(APP_PATH, 'github_token.json')
 
+API_KEY = "rvml2qyo081dvmn"
+API_SECRET = "toe9kimrkhd4bx7"
+
 # Services to send the link to the hosted file to
 SHARING_SERVICES = 'clipboard facebook twitter email stdout'.split(' ')
 

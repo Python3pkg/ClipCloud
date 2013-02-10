@@ -18,7 +18,6 @@ setup(
         'dropbox'
     ],
     py_modules=[
-        'apikeys',
         'clipcloud',
         'clipboard',
         'dbox',

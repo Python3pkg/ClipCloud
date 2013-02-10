@@ -5,7 +5,6 @@ from dropbox.session import DropboxSession
 from dropbox.client import DropboxClient
 
 from settings import *
-from apikeys import *
 from message import Message
 
 
