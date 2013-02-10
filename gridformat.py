@@ -15,6 +15,13 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
     widths = [max([len(cell) for cell in row]) for row in zip(*grid)]
     total = sum(widths)
 
+    # Number of columns in the grid
+    num_columns = len(grid[0])
+    # Number of characters in the string used to separate columns
+    separator_width = 3
+    # Total number of characters used by all column separators in one row of the grid
+    separators_width = num_columns * separator_width
+
     # Try to determine the width of the user's terminal window in characters
     # so the rows can be truncated if they are too long
     try:
@@ -34,8 +41,7 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
 
     if total > terminal_width:
         if truncatable_column is not None:
-            # 12 is the number of dividers and spaces added
-            terminal_diff = terminal_width - total - 12
+            terminal_diff = terminal_width - total - separators_width
             # Reduce the width of the column by the difference
             widths[2] += terminal_diff
 
