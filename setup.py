@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='ClipCloud',
-    version='0.1',
+    version='0.2',
     url='https://github.com/lavelle/ClipCloud',
 
     author='Giles Lavelle',
@@ -28,8 +28,7 @@ setup(
         'message',
         'pyjson',
         'screenshot',
-        'settings',
-        'tray'
+        'settings'
     ],
     entry_points={
         'console_scripts': ['clipcloud=clipcloud:main']

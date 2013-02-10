@@ -63,7 +63,7 @@ def clipcloud():
     screenshot_parser = subparsers.add_parser('snap')
     screenshot_parser.add_argument('-m', '--mode', dest='mode',
         help="The way the area of the screen to be captured is defined",
-        default='screen', choices=['screen', 'draw'])
+        default='screen', choices=['screen', 'select'])
     screenshot_parser.set_defaults(func=screenshot)
 
     # Create the parser for options that only apply to viewing the history

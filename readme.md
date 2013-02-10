@@ -17,7 +17,7 @@ cd ClipCloud
 
 ### Arguments:
 - `up </path/to/file/or/folder> [second file, third file...]`: Upload the specified files and folders.
-- `snap [-m mode]`: Take a screenshot and upload it. Mode can be `draw` or `screen`. Defaults to `screen`.
+- `snap [-m mode]`: Take a screenshot and upload it. Mode can be `select` or `screen`. Defaults to `screen`. Only works on OS X.
 - `history [-l number_of_records] [-t sort_by] [-b start] [-d direction]`: Show a history of the files you've uploaded previously. Defaults to the last 10 records.
 - `revisit <operation> <id>`: Do something with a previously uploaded file. `id` specifies which file to upload. `operation` can be either `upload`, `remote` or `local`.
 - `text [-e extension]`: Share the contents of your clipboard. Currently uploads to Dropbox, support for Github Gists planned. Extenstion defaults to `txt`.
@@ -32,6 +32,9 @@ cd ClipCloud
 - The Python Dropbox API and all its dependencies
 
 ## Changelog
+
+### 0.2
+- Fixed screenshot feature
 
 ### 0.1
 - Inital release

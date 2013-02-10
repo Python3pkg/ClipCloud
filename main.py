@@ -3,7 +3,7 @@ The core functionality of the program.
 Contains the functions for managing each major task the program can perform
 such as uploading files and taking screenshots
 
-The actual code to perform these actions is in separate modules, this once just ties them together
+The actual code to perform these actions is in separate modules, this one just ties them together
 """
 
 import os
@@ -140,13 +140,13 @@ c = ClipCloud()
 
 def screenshot(args):
     """Take a screenshot and upload it to Dropbox."""
-
     from screenshot import Screenshot
 
-    # Import the screenshot module and take a screenshot with the mode the user specified
-    path, filename = Screenshot().capture(args.mode)
-    # Upload the screenshot
-    c.handle_files([path], [filename], args.share)
+    screenshot = Screenshot(args.mode)
+
+    screenshot.capture()
+
+    c.handle_files([screenshot.path], [filename], args.share)
 
 
 def upload(args):
