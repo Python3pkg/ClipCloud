@@ -1,11 +1,11 @@
 import webbrowser
-import json
 
 from dropbox.session import DropboxSession
 from dropbox.client import DropboxClient
 
 from settings import *
 from message import Message
+from pyjson import PyJson
 
 
 class Dropbox:
@@ -21,10 +21,12 @@ class Dropbox:
 
         session = DropboxSession(API_KEY, API_SECRET, self.ACCESS_TYPE)
 
+        token_file = PyJson(TOKEN_PATH)
+        token = token_file.doc
+
         # If there is a token saved, that can be used to connect with Dropbox
-        if os.path.exists(TOKEN_PATH):
+        if 'key' in token and 'secret' in token:
             # Read the token and authenticate the session with it
-            token = json.load(open(TOKEN_PATH))
             session.set_token(token['key'], token['secret'])
 
         # Otherwise it is necessary to authenticate for the first time
@@ -51,9 +53,9 @@ class Dropbox:
                 exit(1)
 
             # Save the access token to a file so that authentication is not needed next time the app is run
-            f = open(TOKEN_PATH, 'w+')
-            f.write(json.dumps({'key': access_token.key, 'secret': access_token.secret}))
-            f.close()
+            token_file.add('key', access_token.key)
+            token_file.add('secret', access_token.secret)
+            token_file.save()
 
         # Create a Dropbox client from the session
         client = DropboxClient(session)

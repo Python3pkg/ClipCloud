@@ -46,7 +46,10 @@ class PyJson:
     def remove(self, key):
         """Remove a record from the Python dictionary"""
 
-        self.doc[key] = None
+        try:
+            del self.doc[key]
+        except KeyError:
+            pass
 
     def save(self):
         """Save a JSON representation of the Python dictionary to the file"""
