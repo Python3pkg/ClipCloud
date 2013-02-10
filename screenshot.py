@@ -28,14 +28,4 @@ class Screenshot:
         return 'screenshot_%s.png' % str(int(time()))
 
     def capture(self):
-        """
-        Take a screenshot
-
-        Arguments:
-        - mode: The type of screenshot to capture, either the entire screen or a custom rectangle
-
-        Returns the path to the image file that the screenshot was saved to
-        and the name of the file without the full path
-        """
-
         subprocess.call(['screencapture', self.flags, self.path])
