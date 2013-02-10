@@ -1,8 +1,11 @@
+import sys
+
+
 class Message:
     def __init__(self, in_user_mode=True):
         self.in_user_mode = in_user_mode
 
-    def message(self, text):
+    def message(self, text, type=1):
         """
         Display some text intended for a human to read
 
@@ -15,4 +18,7 @@ class Message:
         """
 
         if self.in_user_mode:
-            print text
+            if type == 1:
+                print text
+            elif type == 2:
+                sys.stderr.write(text + '\n')

@@ -22,10 +22,10 @@ class ClipCloud:
         """
         Save the details of an uploaded file to the history file and send the link to its destination
 
-        Arguments:
-        - link: The link to the uploaded file
-        - paths: An array of paths to all the files and folders that were uploaded
-        - share_to: A string representing the destination of the link - clipboard, social network or stdout
+        link - The link to the uploaded file
+        paths - An array of paths to all the files and folders that were uploaded
+        share_to - A string describing the intended destination of the link -
+                   either the clipboard, a social network or stdout
         """
 
         if not self.link:
@@ -146,7 +146,7 @@ def screenshot(args):
 
     screenshot.capture()
 
-    c.handle_files([screenshot.path], [filename], args.share)
+    c.handle_files([screenshot.path], [screenshot.filename], args.share)
 
 
 def upload(args):

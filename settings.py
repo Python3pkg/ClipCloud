@@ -12,7 +12,7 @@ if PLATFORM == 'Darwin':
 elif PLATFORM == 'Windows':
     APP_PATH = os.path.join(os.environ['APPDATA'], APP_NAME)
 elif PLATFORM == 'Linux':
-    APP_PATH = os.path.expanduser(os.path.join("~", "." + APP_NAME))
+    APP_PATH = os.path.expanduser(os.path.join('~', '.' + APP_NAME))
 
 # Directory for storing screenshots
 SCREENSHOT_PATH = os.path.join(APP_PATH, 'img')
@@ -31,7 +31,7 @@ API_KEY = "rvml2qyo081dvmn"
 API_SECRET = "toe9kimrkhd4bx7"
 
 # Services to send the link to the hosted file to
-SHARING_SERVICES = 'clipboard facebook twitter email stdout'.split(' ')
+SHARING_SERVICES = ['clipboard', 'facebook', 'twitter', 'email', 'stdout']
 
 # Default message when shared to a social network
 SHARE_MESSAGE = 'I just uploaded a file to ClipCloud - check it out.'

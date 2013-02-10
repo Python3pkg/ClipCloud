@@ -11,7 +11,7 @@ from message import Message
 class Dropbox:
     """Methods for interacting with the Dropbox API"""
 
-    # we only need access to one folder in the user's Dropbox, not the entire thing.
+    # Access is only needed to one folder in the user's Dropbox
     ACCESS_TYPE = 'app_folder'
 
     def __init__(self, in_user_mode=True):
@@ -21,45 +21,41 @@ class Dropbox:
 
         session = DropboxSession(API_KEY, API_SECRET, self.ACCESS_TYPE)
 
-        # if there is a token saved, that can be used to connect with dropbox
+        # If there is a token saved, that can be used to connect with Dropbox
         if os.path.exists(TOKEN_PATH):
-            # read the token and authenticate the session with it
+            # Read the token and authenticate the session with it
             token = json.load(open(TOKEN_PATH))
             session.set_token(token['key'], token['secret'])
 
-        # otherwise we need to authenticate for the first time
+        # Otherwise it is necessary to authenticate for the first time
         else:
-            # request an access token
+            # Request an access token
             request_token = session.obtain_request_token()
             url = session.build_authorize_url(request_token)
 
-            # open the auth page in the user's browser and wait for them to accept
+            # Open the authentication page in the user's browser and wait for them to accept
             webbrowser.open(url, new=2)
 
             print "Press enter once you have authorised the app in your browser"
             raw_input()
 
-            # get a new access token from the authenticated session
+            # Get a new access token from the authenticated session
             # This will fail if the user didn't visit the above URL and press 'Allow'
             try:
                 access_token = session.obtain_access_token(request_token)
-            # except RESTSocketError:
-            #     if RESTSocketError.ERRNO == 10061:
-            #         print "Could not connect to the Dropbox servers \
-            #             because your network's proxy blocked it."
+
             except Exception as error:
                 if DEBUG:
                     print error
                 print "You didn't authorise the app, or something else went wrong"
-                print "Either way we can't continue"
-                return
+                exit(1)
 
-            # save the access token to a file so that next time we don't have to authenticate
+            # Save the access token to a file so that authentication is not needed next time the app is run
             f = open(TOKEN_PATH, 'w+')
             f.write(json.dumps({'key': access_token.key, 'secret': access_token.secret}))
             f.close()
 
-        # create a client from the finished session
+        # Create a Dropbox client from the session
         client = DropboxClient(session)
 
         self.client = client
@@ -68,9 +64,8 @@ class Dropbox:
         """
         Upload a file to the Dropbox servers
 
-        Arguments:
-        - path: The path to the local copy of the file to be uploaded
-        - filepath: The path, including the filename given to the remote copy of the file
+        path - The path to the local copy of the file to be uploaded
+        filepath - The path, including the filename given to the remote copy of the file
         once it is uploaded to Dropbox. If omitted it defaults to be the same as path
         """
 
@@ -87,10 +82,11 @@ class Dropbox:
             # Open the file located at path and upload it to the Dropbox servers
             response = self.client.put_file(filepath, open(path, 'rb'))
             self.m.message('Upload finished')
+
         except Exception as error:
-            self.m.message('Upload failed')
+            self.m.message('Upload failed', 2)
             if DEBUG:
-                print error
+                self.m.message(error, 2)
             return
 
         if DEBUG:
@@ -101,8 +97,7 @@ class Dropbox:
         """
         Upload a folder to the Dropbox servers
 
-        Arguments:
-        - folder: A string representing the path to the folder to be uploaded
+        folder - A string representing the path to the folder to be uploaded
         """
 
         # Create a folder in the user's Dropbox with the same name as the local folder
@@ -121,12 +116,11 @@ class Dropbox:
 
     def get_link(self, filename):
         """
-        Get the URL of the copy of a file or folder hosted on Dropbox
+        Get the URL of the Dropbox-hosted copy of a file or folder
 
-        Arguments:
-        - filename: The path to the file or folder within the user's Dropbox to get the URL of
+        filename - The path to the file or folder within the user's Dropbox
 
-        Returns: A string containing the URL, in the format http://db.tt/xxxxxxxx
+        Returns the URL as a string in the format http://db.tt/xxxxxxxx
         """
         return self.client.share(filename)['url']
 
@@ -134,9 +128,8 @@ class Dropbox:
         """
         Create a folder in the user's Dropbox
 
-        Arguments:
-        - folder_name: The name of the folder to create
-        - num: The number to append to the folder name if a folder with the specified name already exists
+        folder_name - The name of the folder to create
+        num - The number to append to the folder name if a folder with the specified name already exists
         """
 
         new_folder_name = folder_name

@@ -12,16 +12,15 @@ class Clipboard:
                 'Are you sure that you currently have only plain text copied?'
             return None
 
-    def set(self, link):
+    def set(self, text):
         """
         Set the contents of the user's clipboard to a string
 
-        Arguments:
-        - link: the url of the uploaded file to set the clipboard to
+        text - The text to be copied to the clipboard
         """
 
-        r = Tk()
-        r.withdraw()
-        r.clipboard_clear()
-        r.clipboard_append(link)
-        r.destroy()
+        t = Tk()
+        t.withdraw()
+        t.clipboard_clear()
+        t.clipboard_append(text)
+        t.destroy()
