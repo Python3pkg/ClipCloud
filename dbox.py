@@ -38,8 +38,8 @@ class Dropbox:
             # Open the authentication page in the user's browser and wait for them to accept
             webbrowser.open(url, new=2)
 
-            print "Press enter once you have authorised the app in your browser"
-            raw_input()
+            print("Press enter once you have authorised the app in your browser")
+            input()
 
             # Get a new access token from the authenticated session
             # This will fail if the user didn't visit the above URL and press 'Allow'
@@ -48,8 +48,8 @@ class Dropbox:
 
             except Exception as error:
                 if DEBUG:
-                    print error
-                print "You didn't authorise the app, or something else went wrong"
+                    print(error)
+                print("You didn't authorise the app, or something else went wrong")
                 exit(1)
 
             # Save the access token to a file so that authentication is not needed next time the app is run
@@ -72,7 +72,7 @@ class Dropbox:
         """
 
         if self.client is None:
-            print 'Please authenticate with Dropbox before trying to upload.'
+            print('Please authenticate with Dropbox before trying to upload.')
             return
 
         if filepath is None:
@@ -143,7 +143,7 @@ class Dropbox:
             self.client.file_create_folder('/' + new_folder_name)
 
             if num > 1:
-                print 'Warning: a folder with that name already exists. Renaming to ' + new_folder_name
+                print('Warning: a folder with that name already exists. Renaming to ' + new_folder_name)
 
             self.final_folder_name = new_folder_name
 

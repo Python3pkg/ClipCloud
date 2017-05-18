@@ -76,8 +76,8 @@ class ClipCloud:
         # If any of the paths don't point to existing files then tell the user
         # There could still be other files that do exist so keep going after this
         if len(non_existent) > 0:
-            print "Some files or folders you tried to upload don't exist"
-            print "They are: %s" % ', '.join(non_existent)
+            print("Some files or folders you tried to upload don't exist")
+            print("They are: %s" % ', '.join(non_existent))
 
         num_files = len(files)
         num_folders = len(folders)
@@ -85,7 +85,7 @@ class ClipCloud:
         # Even though argparse handles missing arguments, if none of the files existed
         # There would be nothing to upload
         if num_files == 0 and num_folders == 0:
-            print 'No valid files or folders specified'
+            print('No valid files or folders specified')
             return
 
         # After this point there is definitely something to upload
@@ -194,9 +194,9 @@ def revisit(args):
     if args.id <= len(history):
         record = history[args.id - 1]
     else:
-        print 'No record with that ID exists'
-        print 'Highest ID is %d' % len(history)
-        print 'Type clipcloud history to see what files you have saved'
+        print('No record with that ID exists')
+        print('Highest ID is %d' % len(history))
+        print('Type clipcloud history to see what files you have saved')
         return
 
     # Get the path to the local copy of the file that the user requested

@@ -41,9 +41,9 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
 
     except Exception as error:
         if DEBUG:
-            print error
-        print 'The size of your terminal window could not be determined so ' \
-            'the layout of the grid below may be broken due to text wrapping.'
+            print(error)
+        print('The size of your terminal window could not be determined so ' \
+            'the layout of the grid below may be broken due to text wrapping.')
 
     # If the grid is wider than the terminal window work out the difference between them -
     # this is the number of characters by which the table should be truncated
@@ -56,8 +56,8 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
             widths[truncatable_column] += terminal_diff
 
         else:
-            print 'The grid is wider than your terminal but no columns can be truncated so ' \
-                'some columns may not be visible.'
+            print('The grid is wider than your terminal but no columns can be truncated so ' \
+                'some columns may not be visible.')
 
     # Interpolate the widths of each column of the table into the row format string
     row_template = row_template % tuple(widths)
@@ -79,7 +79,7 @@ def format_grid(grid, divider_positions=[], truncatable_column=None):
     # Add a horizontal divider below the column titles
     width = len(a[0])
 
-    for pos, i in zip(divider_positions, xrange(len(divider_positions))):
+    for pos, i in zip(divider_positions, range(len(divider_positions))):
         a.insert(pos + i, '-' * width)
 
     # Create the final string and trim the last line break

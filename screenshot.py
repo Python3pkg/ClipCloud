@@ -7,7 +7,7 @@ import subprocess
 class Screenshot:
     def __init__(self, mode):
         if PLATFORM != 'Darwin':
-            print 'Screenshot tool only works on OS X'
+            print('Screenshot tool only works on OS X')
             exit(1)
 
         self.flags = self.build_flags(mode)

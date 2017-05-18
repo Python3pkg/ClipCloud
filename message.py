@@ -19,6 +19,6 @@ class Message:
 
         if self.in_user_mode:
             if type == 1:
-                print text
+                print(text)
             elif type == 2:
                 sys.stderr.write(text + '\n')

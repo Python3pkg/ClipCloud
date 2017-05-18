@@ -27,7 +27,7 @@ class History:
         """
 
         if len(self.history) < 1:
-            print 'No records to display'
+            print('No records to display')
             return
 
         history = sorted(self.history, key=lambda k: k[sort_by], reverse=direction == 'd')
@@ -49,7 +49,7 @@ class History:
 
             limit -= 1
 
-        print format_grid(grid, divider_positions=[1], truncatable_column=2)
+        print(format_grid(grid, divider_positions=[1], truncatable_column=2))
 
     def add(self, path, filename, url):
         """

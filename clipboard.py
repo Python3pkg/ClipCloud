@@ -1,4 +1,4 @@
-from Tkinter import Tk
+from tkinter import Tk
 
 
 class Clipboard:
@@ -8,8 +8,8 @@ class Clipboard:
         try:
             return Tk().clipboard_get()
         except:
-            print 'Could not get the contents of the clipboard.\n' + \
-                'Are you sure that you currently have only plain text copied?'
+            print('Could not get the contents of the clipboard.\n' + \
+                'Are you sure that you currently have only plain text copied?')
             return None
 
     def set(self, text):
